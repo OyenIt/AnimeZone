@@ -1,0 +1,270 @@
+@use "../../scss/" as *;
+
+.banner {
+    height: 50vh;
+    position: relative;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%; 
+        @include overlay();
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100px;
+        background-image: linear-gradient(to top, $body-bg, rgba($black, 0));
+    }
+}
+.border {
+    border: 2px indigo dashed;
+  }
+.movie-content {
+    @include flex(flex-start, flex-start);
+    max-width: 1260px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -200px;
+    position: relative;
+    padding: 0 2rem;
+
+    &__poster {
+        flex: 1;
+
+        @include mobile {
+            // display: none;
+        }
+
+        &__img {
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            border-radius: $border-radius;
+            padding-top: 165%;
+        }
+    }
+
+    &__info {
+        width: 100%;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        position: relative;
+
+        @include mobile {
+            width: 100%;
+        }
+
+        & > * {
+            margin-bottom: 2rem;
+        }
+
+        .title {
+            font-size: 4rem;
+            line-height: 1;
+        }
+
+        .genres {
+            & > * ~ * {
+                // margin-left: 0.5rem;
+                overflow-y: auto;
+                max-height: 5px;
+            }
+
+            &__item {
+                padding: 0.5rem 1.5rem;
+                border: 2px solid $white;
+                border-radius: $border-radius;
+                font-size: 0.8rem;
+                font-weight: 600;
+                background-color: $body-bg;
+            }
+        }
+    }
+}
+
+.casts {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 10px;
+
+    &__item {
+        &__img {
+            padding-top: 160px;
+            background-size: cover;
+            margin-bottom: 0.5rem;
+        }
+
+        &__name {
+            font-size: 0.8rem;
+        }
+    }
+}
+
+.video {
+    margin-bottom: 3rem;
+
+    &__title {
+        margin-bottom: 1.5rem;
+    }
+}
+nav ul{height:300px; width:100%;}
+nav ul{overflow:hidden; overflow-y:scroll;}
+.show-video-eps{
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: 70% auto;
+    margin: 0px 0px 0px 0px;
+    
+    gap: 10px;
+}
+.background-video{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    right: 0px;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+    opacity: 1;
+    border-radius: $border-radius;
+    padding: 0px;
+}
+.show-poster-info{
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: 20% auto;
+    margin: 0px 0px 0px 0px;
+    width: 100%;
+    gap: 10px;
+}
+.link-download{
+    padding: 0.5rem 1.5rem;
+    border: 2px solid $white;
+    border-radius: $border-radius;
+    font-size: 0.8rem;
+    font-weight: 600;
+    background-color: $body-bg;
+    display: inline;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: center;
+    @include mobile{
+        margin-right: 5px;
+        
+        height: 75%;
+    }
+    
+}
+.group-link-download{
+    // display: grid;
+    // grid-template-rows: auto auto auto auto auto;
+    // grid-template-columns: auto auto auto auto auto;
+    
+    display: flex;
+    width: 70%;
+    overflow:auto;
+    margin: 0;
+    @include mobile{
+        margin-bottom: 0;
+        width: 70%;
+        height: 30px;
+        overflow:auto;
+    }
+}
+.show-episode{
+    display: grid;
+    grid-auto-rows: minmax(40px, auto);
+    grid-template-columns: auto auto auto auto auto;
+    height: 450px;
+    overflow:auto;
+    @include mobile{
+        grid-auto-rows: minmax(30px, 20px);
+        grid-template-columns: auto auto;
+        height: 140px;
+        overflow:auto;
+    }
+}
+.scroll-episode{
+    height: 10px;
+}
+/*
+ *  STYLE 5
+ */
+
+.group-link-download::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #000000;
+}
+
+.group-link-download::-webkit-scrollbar
+{   
+    
+    width: 5px;
+    height: 10px;
+    background-color: #F5F5F5;
+    @include mobile{
+        width: 5px;
+        height: 1px;
+    }
+}
+
+.group-link-download::-webkit-scrollbar-thumb
+{
+    // background-color: rgb(255, 255, 255);
+    background-color: rgba(248, 248, 248, 0.2);
+    // background-image: -webkit-gradient(linear, 0 0, 0 100%,
+    //                     color-stop(.5, rgba(255, 255, 255, .2)),
+    //                     color-stop(.5, transparent), to(transparent));
+}
+
+// 
+.show-episode::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #000000;
+}
+
+.show-episode::-webkit-scrollbar
+{   
+    
+    width: 8px;
+    height: 10px;
+    background-color:rgb(228, 50, 50);;
+    @include mobile{
+        width: 5px;
+        height: 1px;
+    }
+}
+
+.show-episode::-webkit-scrollbar-thumb
+{
+    background-color: rgba(248, 248, 248, 0.2);
+    opacity: 0.2;
+    // background-image: -webkit-gradient(linear, 0 0, 0 100%,
+    //                     color-stop(.5, rgba(255, 255, 255, .2)),
+    //                     color-stop(.5, transparent), to(transparent));
+}
+
+
+
+.info{
+    font-size: 1.5em;
+    font-weight: 600;
+    @include mobile{
+        font-size: 0.2em;
+    }
+}
