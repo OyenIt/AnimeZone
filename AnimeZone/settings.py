@@ -92,14 +92,25 @@ WSGI_APPLICATION = 'AnimeZone.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'AnimeZoneDB',
         # DB : animezone
         # user : tukaimasin
         # pass : Brokenrose01
-        'USER': 'AnimeZone',
-        'PASSWORD': 'animezone',
+        
+        # local
+        # 'NAME': 'AnimeZoneDB',
+        # 'USER': 'AnimeZone',
+        # 'PASSWORD': 'animezone',
+        # 'HOST':'localhost',
+        # 'PORT':'5433',
+        
+        
+        # for deploy 
+        'NAME': 'animezone',
+        'USER': 'tukaimasin',
+        'PASSWORD': 'Brokenrose01',
         'HOST':'localhost',
-        'PORT':'5433',
+        'PORT':'5432',
+        
     }
 }#for deploy port must be 5432
 
