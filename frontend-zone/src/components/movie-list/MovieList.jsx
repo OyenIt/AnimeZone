@@ -37,7 +37,7 @@ const MovieList = props => {
                 
         }
         else if(props.category === "Anime" ){
-            fetch(apiConfig.baseUrl+`film/${props.category}/`,{ 
+            fetch(apiConfig.baseUrl+`api/AzItemAnime//`,{ 
                 method:'GET',
                 headers : {
                     'Content-Type':'application/json',

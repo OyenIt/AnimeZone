@@ -37,7 +37,7 @@ const MovieCard = props => {
                 </Button>
                 <div className='info-card'>
                     <h3>{item.series || item.title}</h3>
-                    {item.itemanime ? (<h3> Episode : {item.itemanime}</h3>):(<h3></h3>)}
+                    {item.itemanime ? (<h3> Episode : {item.itemanime.length}</h3>):(<h3></h3>)}
                     
                 </div>
             </div>

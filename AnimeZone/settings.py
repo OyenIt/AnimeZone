@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-3u(m*bmca*5lk%6+emv3@x%7vph#3=m5_57^@912u%0a_z-n^g
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['localhost','127.0.0.1','167.172.64.94']
 
 
 # Application definition
@@ -69,6 +69,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             # os.path.join(BASE_DIR,'frontend/public'),
+            # os.path.join(BASE_DIR,'templates'),
             os.path.join(BASE_DIR,'frontend-zone/build'),
             ],
         'APP_DIRS': True,
@@ -157,7 +158,9 @@ USE_TZ = True
 
 # STATIC_URL = 'static/'
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "frontend-zone/build/static")]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "frontend-zone/build/static"),
+    os.path.join(BASE_DIR, "static")]
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 MEDIA_URL = '/media/'
 
@@ -175,6 +178,13 @@ CORS_ORIGIN_REGEX_WHITELIST =[
     'http://localhost:3000',
 ]
 
+
+
+# REST_FRAMEWORK = {
+#     'DEFAULT_RENDERER_CLASSES': (
+#         'rest_framework.renderers.JSONRenderer',
+#     )
+# }
 # import django_heroku
 # django_heroku.settings(locals())
 # import dj_database_url

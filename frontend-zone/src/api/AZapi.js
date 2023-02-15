@@ -15,7 +15,7 @@ export const category = {
 
 const enjeApi = {
     getMoviesList: (type, params) => {
-        const url = 'http://127.0.0.1:8000/movie' ;
+        const url = 'http://127.0.0.1:8000/api/azMovie' ;
         return axiosClient.get(url);
     },
     getAnimeList: (type, params) => {

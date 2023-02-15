@@ -8,9 +8,14 @@ from rest_framework.decorators import api_view
 from django_filters.rest_framework import DjangoFilterBackend
 from datetime import datetime, timedelta
 
+
+# class admin_page()
+
+
+
 class AzItemMovieView(viewsets.ModelViewSet):  
     serializer_class = AzMovieSerializer 
-    queryset = AzItemMovie.objects.all()
+    queryset = AzItemMovie.objects.all().order_by('-release')
     
 class AzItemAnimeView(viewsets.ModelViewSet):  
     serializer_class = AzItemAnimeSerializer   
@@ -18,29 +23,58 @@ class AzItemAnimeView(viewsets.ModelViewSet):
     
 class AzSubItemAnimeView(viewsets.ModelViewSet):  
     serializer_class = AzSubItemAnimeSerializer
-    queryset = AzSubItemAnime.objects.all()
+    queryset = AzSubItemAnime.objects.all().order_by('-upload_at')
 
 
-    # Show item list
-class itemListMovie(generics.ListAPIView):
-    serializer_class = AzMovieSerializer
-    def get_queryset(self):
-        return AzItemMovie.objects.all().order_by('-release')
-    
-class itemListAnime(generics.ListAPIView):
-    serializer_class = AzItemAnimeSerializer
-    def get_queryset(self):
-        return AzItemAnime.objects.all().order_by('-release')
-    
-    # Detail Movie
-class itemDetailMovie(generics.ListAPIView):
+class detailMovie(viewsets.ModelViewSet):
     serializer_class = AzMovieSerializer
     def get_queryset(self):
         slug = self.kwargs['slug']
         return AzItemMovie.objects.filter(slug=slug)
     
-class itemDetailAnime(generics.ListAPIView):
+
+
+
+
+
+
+
+
+
+    # Show All item 
+class itemListMovie(generics.ListAPIView):
+    serializer_class = AzMovieSerializer
+    def get_queryset(self):
+        return AzItemMovie.objects.all()
+
+
+
+    # Show item list
+# class itemListMovie(generics.ListAPIView):
+#     serializer_class = AzMovieSerializer
+#     def get_queryset(self):
+#         return AzItemMovie.objects.all().order_by('-release')
+    
+# class itemListAnime(generics.ListAPIView):
+#     serializer_class = AzItemAnimeSerializer
+#     def get_queryset(self):
+#         return AzItemAnime.objects.all().order_by('-release')
+    
+    # Detail Movie
+class DetailMovie(generics.ListAPIView):
+    serializer_class = AzMovieSerializer
+    def get_queryset(self):
+        slug = self.kwargs['slug']
+        return AzItemMovie.objects.filter(slug=slug)
+    
+class DetailAnime(generics.ListAPIView):
     serializer_class = AzItemAnimeSerializer
     def get_queryset(self):
         slug = self.kwargs['slug']
         return AzItemAnime.objects.filter(slug=slug)
+    
+class DetailSubAnime(generics.ListAPIView):
+    serializer_class = AzSubItemAnimeSerializer
+    def get_queryset(self):
+        id_item = self.kwargs['id_item']
+        return AzSubItemAnime.objects.filter(id=id_item)
