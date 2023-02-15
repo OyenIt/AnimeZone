@@ -10,7 +10,6 @@ const Setup = () => {
     <>
     <AdminMenu/>
     </>
-    
   )
 }
 

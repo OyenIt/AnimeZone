@@ -21,7 +21,7 @@ const MovieGrid = props => {
             if (keyword === undefined){
                 switch(props.tipe){
                     case tipe.movie:
-                        fetch(apiConfig.baseUrl+`movie/`,{
+                        fetch(apiConfig.baseUrl+`api/AzMovie/`,{
                             method:'GET',
                             headers : {
                                 'Content-Type':'application/json',
@@ -33,7 +33,7 @@ const MovieGrid = props => {
                         break;
                     case tipe.anime:
                         if(props.category !== undefined){
-                            fetch(apiConfig.baseUrl+`anime/`,{
+                            fetch(apiConfig.baseUrl+`api/AzItemAnime/`,{
                             method:'GET',
                             headers : {
                                 'Content-Type':'application/json',
@@ -43,7 +43,7 @@ const MovieGrid = props => {
                             if (res.ok) return res.json()
                             }).then((res) => setItems(res)).catch((err) => console.log(err));
                         }else if(props.category !== undefined){
-                            fetch(apiConfig.baseUrl+`anime/`,{
+                            fetch(apiConfig.baseUrl+`api/AzItemAnime/`,{
                             method:'GET',
                             headers : {
                                 'Content-Type':'application/json',
@@ -53,7 +53,7 @@ const MovieGrid = props => {
                             if (res.ok) return res.json()
                             }).then((res) => setItems(res)).catch((err) => console.log(err));
                         }else{
-                            fetch(apiConfig.baseUrl+`anime/`,{
+                            fetch(apiConfig.baseUrl+`api/AzItemAnime/`,{
                             method:'GET',
                             headers : {
                                 'Content-Type':'application/json',

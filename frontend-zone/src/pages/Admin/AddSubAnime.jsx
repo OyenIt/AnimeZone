@@ -11,20 +11,26 @@ import "react-datepicker/dist/react-datepicker.css";
 import bg from '../../assets/footer-bg.jpg';
 
 const AddSubAnime = () => {
+    var link_360 = ['','','','',''];
+    var link_480 = ['','','','',''];
+    var link_720 = ['','','','',''];
+    var link_1080 = ['','','','',''];
     const [poster,setposter] = useState("")
     const [series,setseries] = useState("")
     const [category,setcategory] = useState([])
     const [title,settitle] = useState("")
-    const [link_360,setlink_360] = useState([])
-    const [link_480,setlink_480] = useState([])
-    const [link_720,setlink_720] = useState([])
-    const [link_1080,setlink_1080] = useState([])
+    var   [link_360,setlink_360] = useState([])
+    var   [link_480,setlink_480] = useState([])
+    var   [link_720,setlink_720] = useState([])
+    var   [link_1080,setlink_1080] = useState([])
     const [stream_link,setstream_link] = useState("")
     const [upload_at, setupload_at] = useState(new Date())
     const [slug,setslug] = useState("")
     const [items, setItems] = useState([])
     const [id_item, setidItem] = useState(0)
-    const linkdownload = []
+
+    
+
     const range = (start, end) => {
         return new Array(end - start).fill().map((d, i) => i + start);
       };
@@ -83,13 +89,13 @@ const AddSubAnime = () => {
           formField.append('link_360',lk1)
         })
         link_480.map(function (lk2) { 
-          formField.append('link_360',lk2)
+          formField.append('link_480',lk2)
         })
         link_720.map(function (lk3) { 
-          formField.append('link_360',lk3)
+          formField.append('link_720',lk3)
         })
         link_1080.map(function (lk4) { 
-          formField.append('link_360',lk4)
+          formField.append('link_1080',lk4)
         })
         
         // formField.append('link_480',link_480)
@@ -131,11 +137,12 @@ const AddSubAnime = () => {
         setShowTables(!showTables);
         showSeries();
       }
-      const Test = (x) => {
-        return (
-            <li className="link-download">1</li>
-        );
-      }
+      // const Test = (x) => {
+      //   return (
+      //       <li className="link-download">1</li>
+      //   );
+      // }
+      
   return (
     <>
     <div className="banner" style={{backgroundImage: `url(${bg})`}}></div>
@@ -259,27 +266,27 @@ const AddSubAnime = () => {
                     <ul className='container-link-dowload'>
                         <li className='container-link-dowload-item'>
                             <input className='input-data-link' type="text" placeholder="Google Drive" name='link1'
-                            onChange={(e) => setlink_360(e.target.value)}/>
+                            onChange={(e) => link_360[0]=e.target.value}/>
                             
                         </li>
                         <li className='container-link-dowload-item'>
                             <input className='input-data-link' type="text" placeholder="Google Drive" name='link2'
-                            onChange={(e) => setlink_360(e.target.value)}/>
+                             onChange={(e) => link_360[1]=e.target.value}/>
                             
                         </li>
                         <li className='container-link-dowload-item'>
                             <input className='input-data-link' type="text" placeholder="Google Drive" name='link3' 
-                            onChange={(e) => setlink_360(e.target.value)}/>
+                            onChange={(e) => link_360[2]=e.target.value}/>
                             
                         </li>
                         <li className='container-link-dowload-item'>
                             <input className='input-data-link' type="text" placeholder="Google Drive" name='link4' 
-                            onChange={(e) => setlink_360(e.target.value)}/>
+                            onChange={(e) => link_360[3]=e.target.value}/>
                             
                         </li>
                         <li className='container-link-dowload-item'>
                             <input className='input-data-link' type="text" placeholder="Google Drive" name='link5' 
-                            onChange={(e) => setlink_360(e.target.value)}/>
+                            onChange={(e) => link_360[4]=e.target.value}/>
                             
                         </li>
                     </ul>
@@ -290,27 +297,27 @@ const AddSubAnime = () => {
                     <ul className='container-link-dowload'>
                         <li className='container-link-dowload-item'>
                             <input className='input-data-link' type="text" placeholder="Google Drive" name='link6' 
-                            onChange={(e) => setlink_480(e.target.value)}/>
+                            onChange={(e) =>link_480[0]=e.target.value}/>
                             
                         </li>
                         <li className='container-link-dowload-item'>
                             <input className='input-data-link' type="text" placeholder="Google Drive" name='link7'
-                            onChange={(e) => setlink_480(e.target.value)}/>
+                            onChange={(e) => link_480[1]=e.target.value}/>
                             
                         </li>
                         <li className='container-link-dowload-item'>
                             <input className='input-data-link' type="text" placeholder="Google Drive" name='link8'
-                            onChange={(e) => setlink_480(e.target.value)}/>
+                            onChange={(e) => link_480[2]=e.target.value}/>
                             
                         </li>
                         <li className='container-link-dowload-item'>
                             <input className='input-data-link' type="text" placeholder="Google Drive" name='link9' 
-                            onChange={(e) => setlink_480(e.target.value)}/>
+                            onChange={(e) => link_480[3]=e.target.value}/>
                             
                         </li>
                         <li className='container-link-dowload-item'>
                             <input className='input-data-link' type="text" placeholder="Google Drive" name='link10' 
-                            onChange={(e) => setlink_480(e.target.value)}/>
+                            onChange={(e) => link_480[4]=e.target.value}/>
                             
                         </li>
                     </ul>
@@ -322,27 +329,27 @@ const AddSubAnime = () => {
                     <ul className='container-link-dowload'>
                         <li className='container-link-dowload-item'>
                             <input className='input-data-link' type="text" placeholder="Google Drive" name='link11' 
-                            onChange={(e) => setlink_720(e.target.value)}/>
+                            onChange={(e) => link_720[0]=e.target.value}/>
                             
                         </li>
                         <li className='container-link-dowload-item'>
                             <input className='input-data-link' type="text" placeholder="Google Drive" name='link12' 
-                            onChange={(e) => setlink_720(e.target.value)}/>
+                            onChange={(e) => link_720[1]=e.target.value}/>
                             
                         </li>
                         <li className='container-link-dowload-item'>
                             <input className='input-data-link' type="text" placeholder="Google Drive" name='link13' 
-                            onChange={(e) => setlink_720(e.target.value)}/>
+                            onChange={(e) => link_720[2]=e.target.value}/>
                             
                         </li>
                         <li className='container-link-dowload-item'>
                             <input className='input-data-link' type="text" placeholder="Google Drive" name='link14' 
-                            onChange={(e) => setlink_720(e.target.value)}/>
+                            onChange={(e) => link_720[3]=e.target.value}/>
                             
                         </li>
                         <li className='container-link-dowload-item'>
                             <input className='input-data-link' type="text" placeholder="Google Drive" name='link15' 
-                            onChange={(e) => setlink_720(e.target.value)}/>
+                            onChange={(e) => link_720[4]=e.target.value}/>
                             
                         </li>
                     </ul>
@@ -353,27 +360,27 @@ const AddSubAnime = () => {
                     <ul className='container-link-dowload'>
                         <li className='container-link-dowload-item'>
                             <input className='input-data-link' type="text" placeholder="Google Drive" name='link16' 
-                            onChange={(e) => setlink_1080(e.target.value)}/>
+                            onChange={(e) => link_1080[0]=e.target.value}/>
                             
                         </li>
                         <li className='container-link-dowload-item'>
                             <input className='input-data-link' type="text" placeholder="Google Drive" name='link17' 
-                            onChange={(e) => setlink_1080(e.target.value)}/>
+                            onChange={(e) => link_1080[1]=e.target.value}/>
                             
                         </li>
                         <li className='container-link-dowload-item'>
                             <input className='input-data-link' type="text" placeholder="Google Drive" name='link18' 
-                            onChange={(e) => setlink_1080(e.target.value)}/>
+                            onChange={(e) => link_1080[2]=e.target.value}/>
                             
                         </li>
                         <li className='container-link-dowload-item'>
                             <input className='input-data-link' type="text" placeholder="Google Drive" name='link19' 
-                            onChange={(e) => setlink_1080(e.target.value)}/>
+                            onChange={(e) => link_1080[3]=e.target.value}/>
                             
                         </li>
                         <li className='container-link-dowload-item'>
                             <input className='input-data-link' type="text" placeholder="Google Drive" name='link20' 
-                            onChange={(e) => setlink_1080(e.target.value)}/>
+                            onChange={(e) => link_1080[4]=e.target.value}/>
                             
                         </li>
                     </ul>
