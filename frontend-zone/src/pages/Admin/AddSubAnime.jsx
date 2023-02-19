@@ -97,10 +97,6 @@ const AddSubAnime = () => {
         link_1080.map(function (lk4) { 
           formField.append('link_1080',lk4)
         })
-        
-        // formField.append('link_480',link_480)
-        // formField.append('link_720',link_720)
-        // formField.append('link_1080',link_1080)
         formField.append('stream_link',stream_link)
         formField.append('upload_at',upload_at.getFullYear()+"-"+(upload_at.getMonth()+1) +"-"+upload_at.getDate())
         

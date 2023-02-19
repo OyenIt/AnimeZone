@@ -24,7 +24,6 @@ const AddAnime = () => {
     const [release,setrelease] = useState(new Date())
     const [status,setstatus] = useState("")
     const [trailer,settrailer] = useState("")
-    const [slug,setslug] = useState("")
     const range = (start, end) => {
         return new Array(end - start).fill().map((d, i) => i + start);
       };
@@ -85,7 +84,6 @@ const AddAnime = () => {
         formField.append('release',release.getFullYear()+"-"+(release.getMonth()+1) +"-"+release.getDate())
         formField.append('status',status)
         formField.append('trailer_link',trailer)
-        formField.append('slug',slug)
         
         try {
             axios

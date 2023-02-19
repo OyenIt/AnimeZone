@@ -92,9 +92,9 @@ const HeroSlideItem = props => {
                             <Button onClick={() => hisrory('/Movie/detail/' + item.slug)}>
                                 Watch now
                             </Button> 
-                            <OutlineButton onClick={setModalActive}>
+                            {/* <OutlineButton onClick={setModalActive}>
                                 Watch trailer
-                            </OutlineButton>
+                            </OutlineButton> */}
                         </div>
                     </div>
                     <div className="hero-slide__item__content__poster">

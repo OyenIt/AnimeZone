@@ -51,5 +51,21 @@ h3 {
 	text-align: center;
 }
 .info-card{
-    background: rgba(200, 54, 54, 0.9);
+    width: 100%;
+    max-width: 100%;
+    background: rgba(37, 37, 37, 0.5);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    text-align: center;
+}
+.info-card-title{
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 90%;
+    max-width: 90%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    text-align: center;
 }

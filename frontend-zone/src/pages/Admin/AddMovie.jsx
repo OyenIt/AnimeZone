@@ -12,22 +12,23 @@ import "react-datepicker/dist/react-datepicker.css";
 import bg from '../../assets/footer-bg.jpg';
 
 const AddMovie = () => {
+
     const [backdrop,setbackdrop] = useState("")
     const [poster,setposter] = useState("")
     const [title,settitle] = useState("")
     const [category,setcategory] = useState([])
     const [description,setdescription] = useState("")
-    const [link_360,setlink_360] = useState([])
-    const [link_480,setlink_480] = useState([])
-    const [link_720,setlink_720] = useState([])
-    const [link_1080,setlink_1080] = useState([])
+    const   [link_360,setlink_360] = useState([])
+    const   [link_480,setlink_480] = useState([])
+    const   [link_720,setlink_720] = useState([])
+    const   [link_1080,setlink_1080] = useState([])
     // const [episode,setepisode] = useState("")
     const [genre,setgenre] = useState([])
     const [producers,setproducers] = useState("")
     const [rate,setrate] = useState(0)
     const [release,setrelease] = useState(new Date())
     const [status,setstatus] = useState("")
-    const [trailer,settrailer] = useState("")
+    const [stream,setstream] = useState("")
     const [slug,setslug] = useState("")
     const range = (start, end) => {
         return new Array(end - start).fill().map((d, i) => i + start);
@@ -86,13 +87,13 @@ const AddMovie = () => {
             formField.append('link_360',lk1)
           })
           link_480.map(function (lk2) { 
-            formField.append('link_360',lk2)
+            formField.append('link_480',lk2)
           })
           link_720.map(function (lk3) { 
-            formField.append('link_360',lk3)
+            formField.append('link_720',lk3)
           })
           link_1080.map(function (lk4) { 
-            formField.append('link_360',lk4)
+            formField.append('link_1080',lk4)
           })
         genre.map(function (gr) {
             formField.append('genres',gr)  
@@ -101,7 +102,7 @@ const AddMovie = () => {
         formField.append('rate',rate)
         formField.append('release',release.getFullYear()+"-"+(release.getMonth()+1) +"-"+release.getDate())
         formField.append('status',status)
-        formField.append('trailer_link',trailer)
+        formField.append('stream_link',stream)
         formField.append('slug',slug)
         
         try {
@@ -268,29 +269,59 @@ const AddMovie = () => {
                 <li>:</li>
                 <li>
                     <ul className='container-link-dowload'>
-                        <li className='container-link-dowload-item'>
+                    <li className='container-link-dowload-item'>
                             <input className='input-data-link' type="text" placeholder="Google Drive" name='link1'
-                            onChange={(e) => setlink_360(e.target.value)}/>
+                            value={link_360[0]} onChange={(e) => {
+                                setlink_360((prevArr) => {
+                                  const result = [...prevArr];
+                                  result[0] = e.target.value;
+                                  return result;
+                                });
+                              }} />
                             
                         </li>
                         <li className='container-link-dowload-item'>
                             <input className='input-data-link' type="text" placeholder="Google Drive" name='link2'
-                            onChange={(e) => setlink_360(e.target.value)}/>
+                             value={link_360[1]} onChange={(e) => {
+                                setlink_360((prevArr) => {
+                                  const result = [...prevArr];
+                                  result[1] = e.target.value;
+                                  return result;
+                                });
+                              }} />
                             
                         </li>
                         <li className='container-link-dowload-item'>
                             <input className='input-data-link' type="text" placeholder="Google Drive" name='link3' 
-                            onChange={(e) => setlink_360(e.target.value)}/>
+                            value={link_360[2]} onChange={(e) => {
+                                setlink_360((prevArr) => {
+                                  const result = [...prevArr];
+                                  result[2] = e.target.value;
+                                  return result;
+                                });
+                              }} />
                             
                         </li>
                         <li className='container-link-dowload-item'>
                             <input className='input-data-link' type="text" placeholder="Google Drive" name='link4' 
-                            onChange={(e) => setlink_360(e.target.value)}/>
+                            value={link_360[3]} onChange={(e) => {
+                                setlink_360((prevArr) => {
+                                  const result = [...prevArr];
+                                  result[3] = e.target.value;
+                                  return result;
+                                });
+                              }} />
                             
                         </li>
                         <li className='container-link-dowload-item'>
                             <input className='input-data-link' type="text" placeholder="Google Drive" name='link5' 
-                            onChange={(e) => setlink_360(e.target.value)}/>
+                             value={link_360[4]} onChange={(e) => {
+                                setlink_360((prevArr) => {
+                                  const result = [...prevArr];
+                                  result[4] = e.target.value;
+                                  return result;
+                                });
+                              }} />
                             
                         </li>
                     </ul>
@@ -299,29 +330,59 @@ const AddMovie = () => {
                 <li>:</li>
                 <li>
                     <ul className='container-link-dowload'>
-                        <li className='container-link-dowload-item'>
+                    <li className='container-link-dowload-item'>
                             <input className='input-data-link' type="text" placeholder="Google Drive" name='link6' 
-                            onChange={(e) => setlink_480(e.target.value)}/>
+                            value={link_480[0]} onChange={(e) => {
+                                setlink_480((prevArr) => {
+                                  const result = [...prevArr];
+                                  result[0] = e.target.value;
+                                  return result;
+                                });
+                              }}/>
                             
                         </li>
                         <li className='container-link-dowload-item'>
                             <input className='input-data-link' type="text" placeholder="Google Drive" name='link7'
-                            onChange={(e) => setlink_480(e.target.value)}/>
+                            value={link_480[1]} onChange={(e) => {
+                                setlink_480((prevArr) => {
+                                  const result = [...prevArr];
+                                  result[1] = e.target.value;
+                                  return result;
+                                });
+                              }} />
                             
                         </li>
                         <li className='container-link-dowload-item'>
                             <input className='input-data-link' type="text" placeholder="Google Drive" name='link8'
-                            onChange={(e) => setlink_480(e.target.value)}/>
+                            value={link_480[2]} onChange={(e) => {
+                                setlink_480((prevArr) => {
+                                  const result = [...prevArr];
+                                  result[2] = e.target.value;
+                                  return result;
+                                });
+                              }}/>
                             
                         </li>
                         <li className='container-link-dowload-item'>
                             <input className='input-data-link' type="text" placeholder="Google Drive" name='link9' 
-                            onChange={(e) => setlink_480(e.target.value)}/>
+                            value={link_480[3]} onChange={(e) => {
+                                setlink_480((prevArr) => {
+                                  const result = [...prevArr];
+                                  result[3] = e.target.value;
+                                  return result;
+                                });
+                              }}/>
                             
                         </li>
                         <li className='container-link-dowload-item'>
                             <input className='input-data-link' type="text" placeholder="Google Drive" name='link10' 
-                            onChange={(e) => setlink_480(e.target.value)}/>
+                            value={link_480[4]} onChange={(e) => {
+                                setlink_480((prevArr) => {
+                                  const result = [...prevArr];
+                                  result[4] = e.target.value;
+                                  return result;
+                                });
+                              }}/>
                             
                         </li>
                     </ul>
@@ -331,29 +392,59 @@ const AddMovie = () => {
                 <li>:</li>
                 <li>
                     <ul className='container-link-dowload'>
-                        <li className='container-link-dowload-item'>
+                    <li className='container-link-dowload-item'>
                             <input className='input-data-link' type="text" placeholder="Google Drive" name='link11' 
-                            onChange={(e) => setlink_720(e.target.value)}/>
+                            value={link_720[0]} onChange={(e) => {
+                                setlink_720((prevArr) => {
+                                  const result = [...prevArr];
+                                  result[0] = e.target.value;
+                                  return result;
+                                });
+                              }} />
                             
                         </li>
                         <li className='container-link-dowload-item'>
                             <input className='input-data-link' type="text" placeholder="Google Drive" name='link12' 
-                            onChange={(e) => setlink_720(e.target.value)}/>
+                            value={link_720[1]} onChange={(e) => {
+                                setlink_720((prevArr) => {
+                                  const result = [...prevArr];
+                                  result[1] = e.target.value;
+                                  return result;
+                                });
+                              }}/>
                             
                         </li>
                         <li className='container-link-dowload-item'>
                             <input className='input-data-link' type="text" placeholder="Google Drive" name='link13' 
-                            onChange={(e) => setlink_720(e.target.value)}/>
+                            value={link_720[2]} onChange={(e) => {
+                                setlink_720((prevArr) => {
+                                  const result = [...prevArr];
+                                  result[2] = e.target.value;
+                                  return result;
+                                });
+                              }}/>
                             
                         </li>
                         <li className='container-link-dowload-item'>
                             <input className='input-data-link' type="text" placeholder="Google Drive" name='link14' 
-                            onChange={(e) => setlink_720(e.target.value)}/>
+                            value={link_720[3]} onChange={(e) => {
+                                setlink_720((prevArr) => {
+                                  const result = [...prevArr];
+                                  result[3] = e.target.value;
+                                  return result;
+                                });
+                              }}/>
                             
                         </li>
                         <li className='container-link-dowload-item'>
                             <input className='input-data-link' type="text" placeholder="Google Drive" name='link15' 
-                            onChange={(e) => setlink_720(e.target.value)}/>
+                            value={link_720[4]} onChange={(e) => {
+                                setlink_720((prevArr) => {
+                                  const result = [...prevArr];
+                                  result[4] = e.target.value;
+                                  return result;
+                                });
+                              }}/>
                             
                         </li>
                     </ul>
@@ -362,37 +453,67 @@ const AddMovie = () => {
                 <li>:</li>
                 <li>
                     <ul className='container-link-dowload'>
-                        <li className='container-link-dowload-item'>
+                    <li className='container-link-dowload-item'>
                             <input className='input-data-link' type="text" placeholder="Google Drive" name='link16' 
-                            onChange={(e) => setlink_1080(e.target.value)}/>
+                            value={link_1080[0]} onChange={(e) => {
+                                setlink_1080((prevArr) => {
+                                  const result = [...prevArr];
+                                  result[0] = e.target.value;
+                                  return result;
+                                });
+                              }}/>
                             
                         </li>
                         <li className='container-link-dowload-item'>
                             <input className='input-data-link' type="text" placeholder="Google Drive" name='link17' 
-                            onChange={(e) => setlink_1080(e.target.value)}/>
+                            value={link_1080[1]} onChange={(e) => {
+                                setlink_1080((prevArr) => {
+                                  const result = [...prevArr];
+                                  result[1] = e.target.value;
+                                  return result;
+                                });
+                              }}/>
                             
                         </li>
                         <li className='container-link-dowload-item'>
                             <input className='input-data-link' type="text" placeholder="Google Drive" name='link18' 
-                            onChange={(e) => setlink_1080(e.target.value)}/>
+                            value={link_1080[2]} onChange={(e) => {
+                                setlink_1080((prevArr) => {
+                                  const result = [...prevArr];
+                                  result[2] = e.target.value;
+                                  return result;
+                                });
+                              }}/>
                             
                         </li>
                         <li className='container-link-dowload-item'>
                             <input className='input-data-link' type="text" placeholder="Google Drive" name='link19' 
-                            onChange={(e) => setlink_1080(e.target.value)}/>
+                            value={link_1080[3]} onChange={(e) => {
+                                setlink_1080((prevArr) => {
+                                  const result = [...prevArr];
+                                  result[3] = e.target.value;
+                                  return result;
+                                });
+                              }}/>
                             
                         </li>
                         <li className='container-link-dowload-item'>
                             <input className='input-data-link' type="text" placeholder="Google Drive" name='link20' 
-                            onChange={(e) => setlink_1080(e.target.value)}/>
+                            value={link_1080[4]} onChange={(e) => {
+                                setlink_1080((prevArr) => {
+                                  const result = [...prevArr];
+                                  result[4] = e.target.value;
+                                  return result;
+                                });
+                              }}/>
                             
                         </li>
                     </ul>
                 </li>
-                <li><h4>TRAILER</h4></li>
+                <li><h4>STREAM</h4></li>
                 <li>:</li>
-                <li><input className='input-data' type="text" placeholder="Enter Trailer" name='trailer' value={trailer}
-                    onChange={(e) => settrailer(e.target.value)}/></li>
+                <li><input className='input-data' type="text" placeholder="Enter stream" name='stream' value={stream}
+                    onChange={(e) => setstream(e.target.value)}/></li>
             </ul>
             
             </div>

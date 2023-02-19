@@ -25,7 +25,13 @@ class AzSubItemAnimeView(viewsets.ModelViewSet):
     serializer_class = AzSubItemAnimeSerializer
     queryset = AzSubItemAnime.objects.all().order_by('-upload_at')
 
-
+class subSeriesAninme(viewsets.ModelViewSet):
+    serializer_class = AzMovieSerializer
+    def get_queryset(self):
+        series = self.kwargs['series']
+        return AzSubItemAnime.objects.filter(series=series)
+    
+    
 class detailMovie(viewsets.ModelViewSet):
     serializer_class = AzMovieSerializer
     def get_queryset(self):
@@ -33,9 +39,23 @@ class detailMovie(viewsets.ModelViewSet):
         return AzItemMovie.objects.filter(slug=slug)
     
 
+class searchMovie(generics.ListAPIView):
+    serializer_class = AzMovieSerializer
+    def get_queryset(self):
+        title = self.kwargs['title']
+        return AzItemMovie.objects.filter(title__icontains=title)
 
+class searchAnime(generics.ListAPIView):
+    serializer_class = AzItemAnimeSerializer
+    def get_queryset(self):
+        series = self.kwargs['series']
+        return AzItemAnime.objects.filter(series__icontains=series)
 
-
+class byGenre(generics.ListAPIView):
+    serializer_class = AzMovieSerializer
+    def get_queryset(self):
+        # genre = self.kwargs['genre']
+        return AzItemMovie.objects.filter(genres__contains=["Adventure","Action"])
 
 
 

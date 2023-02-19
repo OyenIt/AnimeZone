@@ -11,7 +11,6 @@ router = routers.DefaultRouter()
 router.register(r'AzItemAnime', views.AzItemAnimeView, 'itemview')
 router.register(r'AzSubItemAnime', views.AzSubItemAnimeView, 'subitemview')
 router.register(r'AzMovie', views.AzItemMovieView, 'itemmovie')
-router.register(r'detailMovie/<str:slug>', views.detailMovie, 'detail_item_movie')
 
 urlpatterns = [
     # path('criticalpage/', admin.site.urls),
@@ -21,6 +20,14 @@ urlpatterns = [
     path('Movie/<str:slug>/', views.DetailMovie.as_view()),
     path('Anime/<str:slug>/', views.DetailAnime.as_view()),
     path('Anime/sub/<int:id_item>/', views.DetailSubAnime.as_view()),
+    path('Movie/search/<str:title>', views.searchMovie.as_view()),
+    path('Anime/search/<str:series>', views.searchAnime.as_view()),
+
+    path('Movie/search/genre/', views.byGenre.as_view()),
+    # path('Anime/search/<str:series>', views.searchAnime.as_view()),
+    
+    
+    
     # path('', vs.index, name='index'),
     path('criticalpage/', vs.critical_page, name='criticalpage'),
     # path('film/<str:category>/', views.itemList.as_view()),

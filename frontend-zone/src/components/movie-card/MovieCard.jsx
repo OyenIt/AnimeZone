@@ -36,8 +36,10 @@ const MovieCard = props => {
                     <i className="bx bx-play"></i>
                 </Button>
                 <div className='info-card'>
-                    <h3>{item.series || item.title}</h3>
-                    {item.itemanime ? (<h3> Episode : {item.itemanime.length}</h3>):(<h3></h3>)}
+                    <div className='info-card-title'>
+                        <span style={{fontSize:"20px", fontWeight:"600"}}>{item.series || item.title}</span>
+                    </div>
+                    {item.itemanime ? (<h3> Episode : {item.itemanime.length}</h3>):(<h3>Episode : 1</h3>)}
                     
                 </div>
             </div>

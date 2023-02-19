@@ -32,7 +32,7 @@ class AzItemMovie(models.Model):
     rate           = models.FloatField(default=0, null=True , blank=True)
     release        = models.DateField(null=True , blank=True)
     status         = models.CharField(max_length=1000, null=True , blank=True)
-    trailer_link   = models.CharField(max_length=1000, null=True , blank=True)
+    stream_link   = models.CharField(max_length=1000, null=True , blank=True)
     slug           = models.SlugField(max_length=1000 , default="", null=True , blank=True)
     
     def __str__(self):
@@ -41,8 +41,8 @@ class AzItemMovie(models.Model):
     def save(self , *args, **kwargs): 
         self.slug = generate_slug(self.title,"movie")
         super(AzItemMovie, self).save(*args, **kwargs)
-    def get_absolute_url(self): 
-        return "/movie/%s/" % self.slug
+    # def get_absolute_url(self): 
+    #     return "/movie/%s/" % self.slug
 
 
 class AzItemAnime(models.Model):

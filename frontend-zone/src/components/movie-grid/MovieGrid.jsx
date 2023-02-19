@@ -15,7 +15,7 @@ const MovieGrid = props => {
     const [page, setPage] = useState(1);
     const [totalPage, setTotalPage] = useState(0);
 
-    const { keyword } = useParams();
+    const { keyword} = useParams();
     useEffect(() => {
         const getList = async () => {
             if (keyword === undefined){
@@ -72,7 +72,7 @@ const MovieGrid = props => {
                 }
             }
             else{
-                fetch(apiConfig.baseUrl+`film/search/item/${keyword}`,{
+                fetch(apiConfig.baseUrl+`${props.tipe}/search/${keyword}`,{
                 method:'GET',
                 headers : {
                     'Content-Type':'application/json',
@@ -143,10 +143,10 @@ const MovieSearch = props => {
     const goToSearch = useCallback(
         () => {
             if (keyword.trim().length > 0) {
-                history(`/${props.category}/search/${keyword}`);
+                history(`/${props.tipe}/search/${keyword}`);
             }
         },
-        [keyword, props.category, history]
+        [keyword, props.tipe, history]
     );
  
     useEffect(() => {

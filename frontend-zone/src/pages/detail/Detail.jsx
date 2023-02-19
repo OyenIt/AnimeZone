@@ -29,20 +29,37 @@ const Detail = () => {
   const [link_1080,setlink_1080] = useState([]);
   
   useEffect(() => {
-    fetch(apiConfig.baseUrl + `${tipe}/${slug}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => {
-        if (res.ok)  return res.json();
+    if (tipe === "Anime") {
+      fetch(apiConfig.baseUrl + `${tipe}/${slug}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
       })
-      // .then((res) =>  )
-      .then( (res) =>  {console.log(res[0].itemanime[res[0].itemanime.length-1]); getSubItem(res[0].itemanime[res[0].itemanime.length-1]);setItem(res)})
-      .catch((err) => console.log(err));
+        .then((res) => {
+          if (res.ok)  return res.json();
+        })
+        // .then((res) =>  )
+        .then( (res) =>  {console.log(res[0].itemanime[res[0].itemanime.length-1]); getSubItem(res[0].itemanime[res[0].itemanime.length-1]);setItem(res)})
+        .catch((err) => console.log(err));
+    }else if (tipe === "Movie") {
+      fetch(apiConfig.baseUrl + `${tipe}/${slug}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((res) => {
+          if (res.ok)  return res.json();
+        })
+        // .then((res) =>  )
+        .then( (res) =>  {setItem(res); setlink_360(res[0].link_360);setlink_480(res[0].link_480);
+          setlink_720(res[0].link_720);setlink_1080(res[0].link_1080);})
+        .catch((err) => console.log(err));
+        
+    }
        
-  }, [])
+  }, [])  
 
   // useEffect(()=>{
   //   fetch(apiConfig.baseUrl + `Anime/sub/${subItem_id}`, {
@@ -95,6 +112,22 @@ const Detail = () => {
 
   const Test = (x) => {
     
+    if (tipe !== "Anime") {
+      return (
+        <>
+              <li style={{
+            borderColor: 'red',
+          }} className="episode-list">
+                <a className="cursor-anime" >
+                  <span className="item-eps">
+                  1
+                  </span>
+                </a>
+              </li>
+            
+        </>
+      );
+    }else{
     return (
       <>
         {x.map((value, valu31) => (
@@ -115,6 +148,7 @@ const Detail = () => {
         ))}
       </>
     );
+  }
   }; 
   
   
@@ -128,45 +162,30 @@ const Detail = () => {
             style={{ backgroundImage: `url(${items.backdrop_path})` }}
           ></div>
           <div className="mb-1 movie-content container">
-            {/* <div className="movie-content__poster">
-                <div className="movie-content__poster__img" style={{backgroundImage: `url(${items.poster_path})`}}></div>
-            </div> */}
+            
             <div className="movie-content__info">
               <span className="info">
                 {items.title || items.series}
               </span>
               <div className="show-video-eps">
               
-              <iframe
+              {tipe !== "Anime" ? <iframe
                   className='background-video'
+                  src={"https://www.youtube.com/embed/"+items.stream_link}
+                  type="video/mp4"
+                  autoPlay
+                  ></iframe> : <iframe
+                  className='background-video'  
                   ref={link_stream}
                   type="video/mp4"
                   autoPlay
-                  ></iframe> 
-                {/* <video muted autoPlay loop controls className='background-video' src={"https://www.youtube.com/watch?v=S9bCLPwzSC0&list=RDMM&index=5"}>
-                    </video> */}
-                
-                
-                {/* {subItem ? subItem.map((value, key) =>{
-                  displaySt(value.stream_link)
-                }) : displaySt(1)} */}
-
-                {/* <DisplayStreamx
-                  id_item={subItem_id ? subItem_id : items.itemanime[items.itemanime.length - 1]}
-                /> */}
-                {/* */}
-
+                  ></iframe> }
                 <div className="scroll-episode">
                   <span className="info">EPISODE</span>
                   <ul className="show-episode">
-                    {/* <li className="episode-list">1</li>
-                        <li className="episode-list"><span className='item-eps'>30</span></li> */}
-                    {/* { Array.from(Array(60)).map(el => <Test />) } */}
-                    {items.itemanime ? Test(items.itemanime): null}
-                    {/* {items.itemanime.map((value,valu31)=><>
-                            <h1>{value}</h1>
-                        </>)} */}
-                    {/* <h1>{item.itemanime}</h1> */}
+                    
+                    {items.itemanime ? Test(items.itemanime): Test("x")}
+                    
                   </ul>
                 </div>
               </div>
@@ -249,7 +268,7 @@ const Detail = () => {
                     <span className="info">{items.title || items.series}</span>
                     <br />
                     <span className="info">
-                      Episode : {items.itemanime.length || "1"}
+                      Episode : {items.itemanime ? items.itemanime.length : "1"}
                     </span>
                     <br />
                     <span className="info">Release : {items.release}</span>
@@ -258,7 +277,13 @@ const Detail = () => {
                     <br />
                     <span className="info">Producers : {items.producers}</span>
                     <br />
-                    <span className="info">Genre : {items.producers}</span>
+                    <span className="info">Genre : {items.genres.map((value,key)=>{
+                      if (key !== items.genres.length-1) {
+                        return  value+", "
+                      }else{
+                        return  value
+                      }
+                    })}</span>
                   </p>
                   <p className="overview">{items.description}</p>
                 </div>
@@ -270,7 +295,6 @@ const Detail = () => {
     </>
   );
 };
-
 const getsmilar = (props) => {
   const smilarItem = props.smlr;
   return <h1>oke</h1>;

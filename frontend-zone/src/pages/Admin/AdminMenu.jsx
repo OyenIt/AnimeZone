@@ -37,7 +37,7 @@ const AdminMenu = () => {
               {/* <Link to="/basecamp/update/series/koderahasia"> <button classNamem 'btn-outline' > Update & Delete</button></Link> */}
             </div>
             <div className="genres">
-            <Link to="/basecamp/updatesubseries/koderahasia"> <button className='btn-outline' > Update & Delete</button></Link>
+            <Link to="/basecamp/ud_movie/koderahasia"> <button className='btn-outline' > Update & Delete</button></Link>
             </div>
             <br/>
             <h1>SERIES ANIME</h1>
@@ -45,7 +45,7 @@ const AdminMenu = () => {
             <Link to="/basecamp/add_anime/koderahasia"> <button className='btn-outline' > ADD ANIME </button></Link>
             </div>
             <div className="genres">
-            <Link to="/basecamp/updatesubseries/koderahasia"> <button className='btn-outline' > Update & Delete</button></Link>
+            <Link to="/basecamp/ud_anime/koderahasia"> <button className='btn-outline' > Update & Delete</button></Link>
             </div>
             <br/>
             <h1>SUB SERIES ANIME</h1>
@@ -53,7 +53,7 @@ const AdminMenu = () => {
             <Link to="/basecamp/add_sub_anime/koderahasia"> <button className='btn-outline' > ADD SUB ANIME </button></Link>
             </div>
             <div className="genres">
-            <Link to="/basecamp/updatesubseries/koderahasia"> <button className='btn-outline' > Update & Delete</button></Link>
+            <Link to="/basecamp/ud_subanime/koderahasia"> <button className='btn-outline' > Update & Delete</button></Link>
             </div>
             
         </div>

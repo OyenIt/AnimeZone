@@ -8,6 +8,9 @@ import Detail from '../pages/detail/Detail';
 import AddMovie from '../pages/Admin/AddMovie';
 import AddAnime from '../pages/Admin/AddAnime';
 import AddSubAnime from '../pages/Admin/AddSubAnime';
+import Ud_Movie from '../pages/Admin/Ud_Movie';
+import Ud_Anime from '../pages/Admin/Ud_Anime';
+import Ud_SubAnime from '../pages/Admin/Ud_SubAnime';
 // import UpdateDelPage from '../pages/Admin/UpdateDelPage';
 // import UpdateDelPageS from '../pages/Admin/UpdateDelPageS';
 // import login_page from '../pages/login/login_page';
@@ -30,6 +33,21 @@ const Jalur = () => {
                 element={<UpdateDelPage/>}
             /> */}
             <Route
+                path='/basecamp/ud_subanime/:secret'
+                exac
+                element={<Ud_SubAnime/>}
+            />
+            <Route
+                path='/basecamp/ud_anime/:secret'
+                exac
+                element={<Ud_Anime/>}
+            />
+            <Route
+                path='/basecamp/ud_movie/:secret'
+                exac
+                element={<Ud_Movie/>}
+            />
+            <Route
                 path='/basecamp/add_anime/:secret'
                 exac
                 element={<AddAnime/>}
@@ -50,7 +68,7 @@ const Jalur = () => {
                 element={<Setup/>}
             />
             <Route
-                path='/:category/search/:keyword'
+                path='/:tipe/search/:keyword'
                 element={<Catalog/>}
             />
             <Route
