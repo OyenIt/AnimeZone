@@ -11,6 +11,8 @@ import apiConfig from '../../api/apiConfig';
 import "react-datepicker/dist/react-datepicker.css";
 import bg from '../../assets/footer-bg.jpg';
 
+import { Link } from 'react-router-dom';
+import bg_home from '../../assets/ic_home.png';
 const AddMovie = () => {
 
     const [backdrop,setbackdrop] = useState("")
@@ -50,15 +52,30 @@ const AddMovie = () => {
     ];
     const { secret} = useParams();
     const navigate = useNavigate();
-    useEffect(() => {
-    if(secret !== undefined){
-      if (secret !== "koderahasia") {
-        navigate('/')
-      }
-    }else{
-      navigate('/')
-    }
-    }, [])
+    const [My_Friends, setMy_friends] = useState(false)
+  const [message, setMessage] = useState('');
+  useEffect(() => {
+        if(localStorage.getItem('access_token') === null){                   
+            window.location.href = '/basecamp'
+            setMy_friends(false)
+        }
+        else{
+         (async () => {
+           try {
+            axios.defaults.headers.common['Authorization'] = "Bearer " + localStorage.getItem('access_token')
+            axios.get('http://127.0.0.1:8000/home',{headers:{'Content-Type': 'application/json'}}).then(res => {
+              setMessage(res.data.message)
+              
+              // console.log(res.data.message)
+            });
+            setMy_friends(true)
+            
+          } catch (e) {
+            setMy_friends(false)
+            window.location.href = '/basecamp'
+          }
+         })()};
+     }, []);
     // var categorys = ['Movie','Anime'];
     var categorys = ['Popular','Trending'];
     // var tipes = ['Trending','New','Populer'];
@@ -106,6 +123,7 @@ const AddMovie = () => {
         formField.append('slug',slug)
         
         try {
+            axios.defaults.headers.common['Authorization'] = "Bearer " + localStorage.getItem('access_token')
             axios
             .post(apiConfig.baseUrl+"api/AzMovie/", formField)
             .then((res) => {
@@ -140,12 +158,15 @@ const AddMovie = () => {
       }
   return (
     <>
-    <div className="banner" style={{backgroundImage: `url(${bg})`}}></div>
+    {My_Friends ? <><div className="banner" style={{backgroundImage: `url(${bg})`}}></div>
     <div className="mb-3 movie-content container">
         {/* <div className="movie-content__poster">
             <div className="movie-content__poster__img" style={{backgroundImage: `url("https://images2.imgbox.com/44/e2/GudW1dRF_o.png")`}}></div>
         </div> */}
         <div className="movie-content-admin__info">
+        <div className="genres" >
+              <Link to="/basecamp/menu"><button className='btn-outline' style={{backgroundImage: 'url(' + bg_home + ')', height:"50px",width:"50px",backgroundSize: 'cover',}} ></button></Link>
+            </div>
             <div className='text-center'>
             <h1>SETUP ITEM</h1>
             </div>
@@ -521,7 +542,7 @@ const AddMovie = () => {
             <button className='btn-save' onClick={addItem}> SAVE </button>
             <br/>
         </div>
-    </div>
+    </div></>:null}
     </>
   )
 }

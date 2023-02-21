@@ -102,7 +102,7 @@ const Detail = () => {
     // console.log(x)
     try {
       if (link_stream.current) {
-        link_stream.current.src = "https://www.youtube.com/embed/"+x;
+        link_stream.current.src = x;
       }
     } catch (error) {
       console.log(error)
@@ -171,15 +171,23 @@ const Detail = () => {
               
               {tipe !== "Anime" ? <iframe
                   className='background-video'
-                  src={"https://www.youtube.com/embed/"+items.stream_link}
+                  src={items.stream_link}
                   type="video/mp4"
+                  style={{ width:"640", height:"360"}}
                   autoPlay
-                  ></iframe> : <iframe
+                  ></iframe> :
+                   <iframe
                   className='background-video'  
                   ref={link_stream}
                   type="video/mp4"
+                  style={{ width:"640", height:"360"}}
                   autoPlay
-                  ></iframe> }
+                  ></iframe>
+                  // <video width="640" height="360" controls >
+                  //       <source ref={link_stream} type="video/mp4"/>
+                  // </video>
+                  
+                  }
                 <div className="scroll-episode">
                   <span className="info">EPISODE</span>
                   <ul className="show-episode">

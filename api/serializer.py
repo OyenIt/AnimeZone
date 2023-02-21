@@ -15,7 +15,7 @@ class AzMovieSerializer(serializers.ModelSerializer):
     class Meta:
         model = AzItemMovie
         fields = "__all__"
-
+        read_only_fields = ("user",)
 # class NjItemTopSerializer(serializers.ModelSerializer):
 #     class Meta:
 #         model = njTopRecom

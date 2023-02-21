@@ -7,25 +7,30 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from django_filters.rest_framework import DjangoFilterBackend
 from datetime import datetime, timedelta
-
-
+from rest_framework.response import Response
+from rest_framework import permissions
 # class admin_page()
 
 
 
-class AzItemMovieView(viewsets.ModelViewSet):  
+class AzItemMovieView(viewsets.ModelViewSet):
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, ]
     serializer_class = AzMovieSerializer 
     queryset = AzItemMovie.objects.all().order_by('-release')
     
-class AzItemAnimeView(viewsets.ModelViewSet):  
+    
+class AzItemAnimeView(viewsets.ModelViewSet):
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, ]
     serializer_class = AzItemAnimeSerializer   
     queryset = AzItemAnime.objects.all()
     
-class AzSubItemAnimeView(viewsets.ModelViewSet):  
+class AzSubItemAnimeView(viewsets.ModelViewSet):
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, ]
     serializer_class = AzSubItemAnimeSerializer
     queryset = AzSubItemAnime.objects.all().order_by('-upload_at')
 
 class subSeriesAninme(viewsets.ModelViewSet):
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, ]
     serializer_class = AzMovieSerializer
     def get_queryset(self):
         series = self.kwargs['series']

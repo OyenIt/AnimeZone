@@ -9,7 +9,8 @@ import getMonth from "date-fns/getYear";
 import apiConfig from '../../api/apiConfig';
 import "react-datepicker/dist/react-datepicker.css";
 import bg from '../../assets/footer-bg.jpg';
-
+import { Link } from 'react-router-dom';
+import bg_home from '../../assets/ic_home.png';
 const AddSubAnime = () => {
     var link_360 = ['','','','',''];
     var link_480 = ['','','','',''];
@@ -51,25 +52,31 @@ const AddSubAnime = () => {
     ];
     const { secret} = useParams();
     const navigate = useNavigate();
-    useEffect(() => {
-        if(secret !== undefined){
-            if (secret !== "koderahasia") {
-              navigate('/')
-            }else{
-                fetch(apiConfig.baseUrl+"api/AzItemAnime/",{
-                    method:'GET',
-                    headers : {
-                      'Content-Type':'application/json',
-                    }
-                  }).then((res) => {
-                    if (res.ok) return res.json()
-                  }).then((res) => setItems(res)).catch((err) => console.log(err));
-            }
-          }else{
-            navigate('/')
+    const [My_Friends, setMy_friends] = useState(false)
+  const [message, setMessage] = useState('');
+  useEffect(() => {
+        if(localStorage.getItem('access_token') === null){                   
+            window.location.href = '/basecamp'
+            setMy_friends(false)
+        }
+        else{
+         (async () => {
+           try {
+            axios.defaults.headers.common['Authorization'] = "Bearer " + localStorage.getItem('access_token')
+            axios.get('http://127.0.0.1:8000/api/AzItemAnime',{headers:{'Content-Type': 'application/json'}}).then(res => {
+              setMessage(res.data.message)
+              setItems(res.data)
+              
+              // console.log(res.data.message)
+            });
+            setMy_friends(true)
+
+          } catch (e) {
+            setMy_friends(false)
+            window.location.href = '/basecamp'
           }
-        
-    }, [])
+         })()};
+     }, []);
     const showSeries  = () =>{
         items.map((val, key) =>{
           if(val.id === id_item){
@@ -102,6 +109,7 @@ const AddSubAnime = () => {
         
         
         try {
+            axios.defaults.headers.common['Authorization'] = "Bearer " + localStorage.getItem('access_token') 
             axios
             .post(apiConfig.baseUrl+"api/AzSubItemAnime/", formField)
             .then((res) => {
@@ -141,12 +149,12 @@ const AddSubAnime = () => {
       
   return (
     <>
-    <div className="banner" style={{backgroundImage: `url(${bg})`}}></div>
+    {My_Friends ? <><div className="banner" style={{backgroundImage: `url(${bg})`}}></div>
     <div className="mb-2 movie-content container">
         <div className="movie-content__poster">
-          
-          {/* <button className='btn-update' onClick={showUpdate} > UPDATE </button>
-          <button className='btn-delete' onClick={DeletItem}> DELETE </button> */}
+        <div className="genres" >
+              <Link to="/basecamp/menu"><button className='btn-outline' style={{backgroundImage: 'url(' + bg_home + ')', height:"50px",width:"50px",backgroundSize: 'cover',}} ></button></Link>
+            </div>
         </div>
         <div className="movie-content__info">
         {showTables ? (
@@ -402,7 +410,7 @@ const AddSubAnime = () => {
             
         </div>
         
-    </div>
+    </div></>:null}
     </>
   )
 }
