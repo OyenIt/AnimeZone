@@ -7,8 +7,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 from . import views as vs
 from rest_framework_simplejwt import views as jwt_views
-# router = routers.SimpleRouter()        
-router = routers.DefaultRouter()            
+router = routers.SimpleRouter()        
+# router = routers.DefaultRouter()            
 router.register(r'AzItemAnime', views.AzItemAnimeView, 'itemview')
 router.register(r'AzSubItemAnime', views.AzSubItemAnimeView, 'subitemview')
 router.register(r'AzMovie', views.AzItemMovieView, 'itemmovie')
@@ -19,12 +19,15 @@ urlpatterns = [
     # path('movie/',views.itemListMovie.as_view()),
     # path('anime/',views.itemListAnime.as_view()),
     path('Movie/<str:slug>/', views.DetailMovie.as_view()),
+    path('Movie/search/<str:title>', views.searchMovie.as_view()),
+    
     path('Anime/<str:slug>/', views.DetailAnime.as_view()),
     path('Anime/sub/<int:id_item>/', views.DetailSubAnime.as_view()),
-    path('Movie/search/<str:title>', views.searchMovie.as_view()),
+    
     path('Anime/search/<str:series>', views.searchAnime.as_view()),
-
-    path('Movie/search/genre/', views.byGenre.as_view()),
+    path('Anime/category/<str:category>', views.AnimeCategory.as_view()),
+    
+    # path('Movie/search/genre/', views.byGenre.as_view()),
     # path('Anime/search/<str:series>', views.searchAnime.as_view()),
     path('home/', vs.HomeView.as_view(), name ='home'),
     # path('logout/', views.LogoutView.as_view(), name ='logout'),

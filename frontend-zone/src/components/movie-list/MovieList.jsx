@@ -12,6 +12,7 @@ const MovieList = props => {
 
     const [items, setItems] = useState([]);
     useEffect(() => {
+        console.log()
         if (props.tipe !== undefined ) {
             if(props.tipe === "Movie"){
                 fetch(apiConfig.baseUrl+`api/AzMovie/`,{
@@ -24,15 +25,40 @@ const MovieList = props => {
                 if (res.ok) return res.json()
             }).then((res) => setItems(res.slice(0,20))).catch((err) => console.log(err));
             }else if(props.tipe === "Anime"){
-                fetch(apiConfig.baseUrl+`api/AzItemAnime/`,{
-                method:'GET',
-                headers : {
-                    'Content-Type':'application/json',
+                if (props.category !== undefined) {
+                    if (props.category === "genre") {
+                        fetch(apiConfig.baseUrl+`Anime/category/${props.category}`,{
+                            method:'GET',
+                            headers : {
+                                'Content-Type':'application/json',
+                            }
+                            
+                            }).then((res) => {
+                            if (res.ok) return res.json()
+                        }).then((res) => setItems(res.slice(0,20))).catch((err) => console.log(err));
+                    }else{
+                        fetch(apiConfig.baseUrl+`Anime/category/${props.category}`,{
+                            method:'GET',
+                            headers : {
+                                'Content-Type':'application/json',
+                            }
+                            
+                            }).then((res) => {
+                            if (res.ok) return res.json()
+                        }).then((res) => setItems(res.slice(0,20))).catch((err) => console.log(err));
+                    }
+                }else{
+                    fetch(apiConfig.baseUrl+`api/AzItemAnime/`,{
+                        method:'GET',
+                        headers : {
+                            'Content-Type':'application/json',
+                        }
+                        
+                        }).then((res) => {
+                        if (res.ok) return res.json()
+                    }).then((res) => setItems(res.slice(0,20))).catch((err) => console.log(err));
                 }
                 
-                }).then((res) => {
-                if (res.ok) return res.json()
-            }).then((res) => setItems(res.slice(0,20))).catch((err) => console.log(err));
             }
                 
         }

@@ -37,7 +37,16 @@ const Home = () => {
                         <OutlineButton className="small">View more</OutlineButton>
                     </Link>
             </div>
-            <MovieList category={category.anime} tipe={tipe.anime}/>
+            <MovieList category={category.popular} tipe={tipe.anime}/>
+        </div>
+        <div className="section mb-3">
+            <div className="section__header mb-2">
+                <h2>New Update Anime</h2>
+                    <Link to="/Anime/new">
+                        <OutlineButton className="small">View more</OutlineButton>
+                    </Link>
+            </div>
+            <MovieList category={category.newUpdate} tipe={tipe.anime}/>
         </div>
         {/* 
         <div className="section mb-3">
@@ -63,6 +72,20 @@ const Home = () => {
                         
                     )}  
         </div> */}
+        <div className="section mb-3">
+                    <div className="section__header mb-2">
+                        <h2>GENRE</h2>
+                    </div>
+                    {listgenre.map((x,z)=> 
+                    <>
+                    <span>   </span>
+                        <Link to={`/Anime/genre/${x}`}>
+                            <OutlineButton className="small">{x}</OutlineButton>
+                        </Link>
+                    </>
+                        
+                    )}  
+        </div>
     </div>
     
         

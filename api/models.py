@@ -59,6 +59,7 @@ class AzItemAnime(models.Model):
                     )
     producers     = models.CharField(max_length=1000, null=True , blank=True)
     rate          = models.FloatField(default=0, null=True , blank=True)
+    update_at     = models.DateField(null=True , blank=True)
     release       = models.DateField(null=True , blank=True)
     status        = models.CharField(max_length=1000, null=True , blank=True)
     trailer_link  = models.CharField(max_length=1000, null=True , blank=True)
@@ -97,6 +98,8 @@ class AzSubItemAnime(models.Model):
     
     def save(self , *args, **kwargs): 
         self.slug = generate_slug(self.title,"sub_anime")
+        if self.series:
+            AzItemAnime.objects.filter(id=self.series.pk).update(update_at = self.upload_at )
         super(AzSubItemAnime, self).save(*args, **kwargs)
     def get_absolute_url(self):
         return "/anime/%s/" % self.slug

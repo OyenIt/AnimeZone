@@ -9,35 +9,54 @@ from django_filters.rest_framework import DjangoFilterBackend
 from datetime import datetime, timedelta
 from rest_framework.response import Response
 from rest_framework import permissions
+from rest_framework.renderers import JSONRenderer
 # class admin_page()
 
 
 
 class AzItemMovieView(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly, ]
+    renderer_classes = [JSONRenderer]
     serializer_class = AzMovieSerializer 
     queryset = AzItemMovie.objects.all().order_by('-release')
     
     
 class AzItemAnimeView(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly, ]
+    renderer_classes = [JSONRenderer]
     serializer_class = AzItemAnimeSerializer   
     queryset = AzItemAnime.objects.all()
     
 class AzSubItemAnimeView(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly, ]
+    renderer_classes = [JSONRenderer]
     serializer_class = AzSubItemAnimeSerializer
     queryset = AzSubItemAnime.objects.all().order_by('-upload_at')
 
 class subSeriesAninme(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly, ]
+    renderer_classes = [JSONRenderer]
     serializer_class = AzMovieSerializer
     def get_queryset(self):
         series = self.kwargs['series']
         return AzSubItemAnime.objects.filter(series=series)
     
+class AnimeCategory(generics.ListAPIView):
+    serializer_class = AzItemAnimeSerializer
+    def get_queryset(self):
+        category = self.kwargs['category']
+        if category == "newUpdate":
+            return AzItemAnime.objects.all().order_by('-update_at')
+        elif category == "Popular" or category == "top_rated":
+            return AzItemAnime.objects.all().order_by('-rate')
+        elif category == "genre":
+            return AzItemAnime.objects.filter(genres__contains=["Adventure","Action"])
+        
+        
     
 class detailMovie(viewsets.ModelViewSet):
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, ]
+    renderer_classes = [JSONRenderer]
     serializer_class = AzMovieSerializer
     def get_queryset(self):
         slug = self.kwargs['slug']
@@ -56,11 +75,11 @@ class searchAnime(generics.ListAPIView):
         series = self.kwargs['series']
         return AzItemAnime.objects.filter(series__icontains=series)
 
-class byGenre(generics.ListAPIView):
-    serializer_class = AzMovieSerializer
-    def get_queryset(self):
-        # genre = self.kwargs['genre']
-        return AzItemMovie.objects.filter(genres__contains=["Adventure","Action"])
+# class byGenre(generics.ListAPIView):
+#     serializer_class = AzMovieSerializer
+#     def get_queryset(self):
+#         # genre = self.kwargs['genre']
+#         return AzItemMovie.objects.filter(genres__contains=["Adventure","Action"])
 
 
 

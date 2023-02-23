@@ -88,14 +88,18 @@ const Jalur = () => {
                 path='/:tipe/detail/:slug'
                 element={<Detail/>}
             />
+            {/* <Route
+                path='/:tipe/genre/:category'
+                element={<Catalog/>}
+            /> */}
             <Route
-                path='/:tipe/genre/:genre'
+                path='/:tipe/:category/:genre'
                 element={<Catalog/>}
             />
-            <Route
+            {/* <Route
                 path='/:tipe/:category'
                 element={<Catalog/>}
-            />
+            /> */}
             <Route
                 path='/:tipe'
                 element={<Catalog/>}

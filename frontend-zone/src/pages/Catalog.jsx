@@ -19,7 +19,7 @@ const Catalog = () => {
             </PageHeader>
             <div className="container">
                 <div className="section mb-3">
-                    <MovieGrid tipe={tipe} category={category} keyword={keyword} genre={genre}/> 
+                    <MovieGrid tipe={tipe} category={category}  keyword={keyword} genre={genre}/> 
                 </div>
             </div>
         </>
