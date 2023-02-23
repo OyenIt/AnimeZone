@@ -31,6 +31,7 @@
 import axios from "axios";
 import {useState} from "react";
 
+import apiConfig from '../../api/apiConfig';
 
 import bg from '../../assets/footer-bg.jpg';
 // Define the Login function.
@@ -47,7 +48,7 @@ const LoginPage = () => {
                };
           // Create the POST requuest
           // const {res} = await axios.post('http://127.0.0.1:8000/token/',user ,{headers:{'Content-Type': 'application/json'}},{withCredentials: true});
-          axios.post('http://127.0.0.1:8000/token/',user ,{headers:{'Content-Type': 'application/json'}},
+          axios.post(apiConfig.baseUrl+'token/',user ,{headers:{'Content-Type': 'application/json'}},
           {withCredentials: true}).then(data => {
             console.log(data.data.access)
             localStorage.clear();

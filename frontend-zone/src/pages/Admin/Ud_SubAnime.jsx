@@ -57,7 +57,7 @@ export const Ud_SubAnime = () => {
          (async () => {
            try {
             axios.defaults.headers.common['Authorization'] = "Bearer " + localStorage.getItem('access_token')
-            axios.get('http://127.0.0.1:8000/api/AzItemAnime/',{headers:{'Content-Type': 'application/json'}}).then(res => {
+            axios.get(apiConfig.baseUrl+'api/AzItemAnime/',{headers:{'Content-Type': 'application/json'}}).then(res => {
               setMessage(res.data.message)
               setItems(res.data)
               // console.log(res.data.message)
