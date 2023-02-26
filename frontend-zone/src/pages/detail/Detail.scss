@@ -37,6 +37,13 @@
 .border {
     border: 2px indigo dashed;
   }
+#content-detail{
+    margin-bottom: 50px;
+    @include tablet{
+        margin-bottom: 10px;
+        margin-top: -370px;
+    }
+}
 .movie-content {
     @include flex(flex-start, flex-start);
     max-width: 1260px;
@@ -45,7 +52,7 @@
     margin-top: -200px;
     position: relative;
     padding: 0 2rem;
-
+    margin-bottom: 2px;
     &__poster {
         flex: 1;
 
@@ -146,6 +153,9 @@ nav ul{overflow:hidden; overflow-y:scroll;}
     opacity: 1;
     border-radius: $border-radius;
     padding: 0px;
+    @include mobile{
+        height: 150px;
+    }
 }
 .show-poster-info{
     display: grid;
@@ -213,6 +223,8 @@ nav ul{overflow:hidden; overflow-y:scroll;}
     @include mobile{
         margin-right: 5px;
         height: 75%;
+        width: 25px;
+        border-radius: 5px;
     }
     
 }

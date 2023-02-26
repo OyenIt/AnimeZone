@@ -3,7 +3,6 @@ import SwiperCore, { Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Button, { OutlineButton } from '../button/Button';
 import Modal, { ModalContent } from '../modal/Modal';
-import enjeApi, { category as categorys } from '../../api/enjeApi';
 import apiConfig from '../../api/apiConfig';
 import './hero-slide.scss';
 import { useNavigate } from 'react-router-dom';
@@ -28,17 +27,20 @@ const HeroSlide = () => {
     return (
         <div className="hero-slide">
             <Swiper
+                
+                
                 modules={[Autoplay]}
                 grabCursor={true}
                 spaceBetween={0}
                 slidesPerView={1}
+                
                 // autoplay={{delay: 3000}}
             >
                 
                  {/* {movieItems.map((item,ky) => <div>{item.title} === </div>)  } */}
                 {
                     movieItems.map((item, i) => (
-                        <SwiperSlide key={i}>
+                        <SwiperSlide id='ucok' key={i}> 
                             {({ isActive }) => (
                                 <HeroSlideItem item={item} className={`${isActive ? 'active' : ''}`} />
                             )}

@@ -20,13 +20,10 @@ urlpatterns = [
     # path('anime/',views.itemListAnime.as_view()),
     path('Movie/<str:slug>/', views.DetailMovie.as_view()),
     path('Movie/search/<str:title>', views.searchMovie.as_view()),
-    
     path('Anime/<str:slug>/', views.DetailAnime.as_view()),
-    path('Anime/sub/<int:id_item>/', views.DetailSubAnime.as_view()),
-    
+    path('Anime/sub/<int:id_item>/', views.DetailSubAnime.as_view()),  
     path('Anime/search/<str:series>', views.searchAnime.as_view()),
     path('Anime/category/<str:category>', views.AnimeCategory.as_view()),
-    
     # path('Movie/search/genre/', views.byGenre.as_view()),
     # path('Anime/search/<str:series>', views.searchAnime.as_view()),
     path('home/', vs.HomeView.as_view(), name ='home'),

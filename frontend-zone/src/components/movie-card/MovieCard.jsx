@@ -14,21 +14,7 @@ const MovieCard = props => {
     const item  = props.item;
     const tipe  = props.tipe;
     const link ='/' + tipe +'/detail/' + item.slug;;
-    // if (category) {
-        
-    // }else{
-    //     link = '/' + 'Anime/detail/' + item.slug;
-    // }
-    
-    // if (item.series) {
-        
-    // }else{
-    //     const link = '/' + 'Anime/detail/' + item.slug;
-    // }
-    
-
-    // const bg = apiConfig.w500Image(item.poster_path || item.backdrop_path);
-
+   
     return (
         <Link to={link}>
             <div className="movie-card" style={{backgroundImage: `url(${item.poster_path})`}}>
@@ -37,9 +23,9 @@ const MovieCard = props => {
                 </Button>
                 <div className='info-card'>
                     <div className='info-card-title'>
-                        <span style={{fontSize:"20px", fontWeight:"600"}}>{item.series || item.title}</span>
+                        <span className='text-title'>{item.series || item.title}</span>
                     </div>
-                    {item.itemanime ? (<h3> Episode : {item.itemanime.length}</h3>):(<h3>Episode : 1</h3>)}
+                    {item.itemanime ? (<span className='text-title'> Episode : {item.itemanime.length}</span>):(<span className='text-title'>Episode : 1</span>)}
                     
                 </div>
             </div>

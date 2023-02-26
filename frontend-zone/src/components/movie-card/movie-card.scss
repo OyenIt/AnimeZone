@@ -1,5 +1,23 @@
 @use "../../scss/" as *;
 
+// .swiper-wrapper {
+//     // margin-left: 32px;
+//     padding-right: 32px;
+// }
+  
+.swiper-wrapper .swiper-slide{
+    padding-right: 10px;
+    margin-right: 50px;
+    @include mobile{
+        margin-right: 0px;
+        width: 120px;
+    }
+}
+.swiper-slide .swiper-slide-next{
+    @include mobile{
+        width: 120px;
+    }
+}
 .movie-card {
     position: relative;
     background-position: top;
@@ -10,8 +28,10 @@
     margin-bottom: 1rem;
     width: 120%; 
     @include tablet {
-        width: 160px; 
+        width: 100%; 
         margin-right: 10px;
+        height: 40%;
+        border-radius: 5px;
     }
     .btn {
         position: absolute;
@@ -58,6 +78,11 @@ h3 {
     overflow: hidden;
     text-overflow: ellipsis; 
     text-align: center;
+    border-radius: 10px;
+    @include tablet{
+        margin-top: -30px;
+        text-align: center;
+    }
 }
 .info-card-title{
     margin-left: 10px;
@@ -68,4 +93,16 @@ h3 {
     overflow: hidden;
     text-overflow: ellipsis; 
     text-align: center;
+    @include tablet{
+        margin-left: 0;
+        text-align: center;
+    }
+}
+.text-title{
+    font-size:20px;
+    font-weight:600;
+    @include tablet{
+    font-size:10px;
+    font-weight:300;
+    }
 }

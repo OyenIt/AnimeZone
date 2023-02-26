@@ -100,7 +100,7 @@ const MovieList = props => {
         <div className="movie-list">
             <Swiper
                 grabCursor={true}
-                spaceBetween={70}
+                
                 slidesPerView={'auto'}
             >
                 {
