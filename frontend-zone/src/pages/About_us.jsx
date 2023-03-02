@@ -1,8 +1,12 @@
-import React from "react";
+import React,{useState} from "react";
 import bg from "../assets/footer-bg.jpg";
+import { PopMessage } from "../components/popm/popMessage";
 const About_us = () => {
+  
+  const [open, setOpen] = useState(true);
   return (
     <>
+    {/* {open ? <PopMessage text="Hello there!" closePopup={() => {setOpen(false);}} />: null } */}
       <div className="banner" style={{ backgroundImage: `url(${bg})` }}></div>
       <div className="mb-3 movie-content container">
         <div className="movie-content__info">

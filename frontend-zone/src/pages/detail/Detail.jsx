@@ -5,13 +5,14 @@ import apiConfig from "../../api/apiConfig";
 import Popup from "reactjs-popup";
 import { Link } from "react-router-dom";
 import { OutlineButton } from "../../components/button/Button";
-import { category, tipe as tp} from "../../api/AZapi";
+import { category, tipe as tp } from "../../api/AZapi";
 import MovieList from "../../components/movie-list/MovieList";
+import { BsDownload } from "react-icons/bs";
 const Detail = () => {
   const { tipe, slug } = useParams();
   const [loading, setLoading] = useState(true);
   const [active, setActive] = useState(0);
-
+  const [titleSub, setTitleSub] = useState([]);
   const [item, setItem] = useState([]);
   const link_stream = useRef();
   const [subItem_id, setsubItem_id] = useState([]);
@@ -51,6 +52,7 @@ const Detail = () => {
         // .then((res) =>  )
         .then((res) => {
           setItem(res);
+          setTitleSub(res[0].title);
           setlink_360(res[0].link_360);
           setlink_480(res[0].link_480);
           setlink_720(res[0].link_720);
@@ -72,6 +74,7 @@ const Detail = () => {
       })
       .then((resItem) => {
         try {
+          setTitleSub(resItem[0].title);
           setlink_360(resItem[0].link_360);
           setlink_480(resItem[0].link_480);
           setlink_720(resItem[0].link_720);
@@ -127,11 +130,7 @@ const Detail = () => {
                     getSubItem(value);
                   }}
                 >
-                  <span className="item-eps">
-                    {valu31 + 1}
-                    {/* {value} :
-                  {subItem_id} */}
-                  </span>
+                  <span className="item-eps">{valu31 + 1}</span>
                 </a>
               </li>
             </>
@@ -140,6 +139,13 @@ const Detail = () => {
       );
     }
   };
+
+  const openNewLink = x =>{
+    console.log("oke")
+    window.open("https://www.highrevenuecpmnetwork.com/s3skmstw0q?key=338b6f5fbc2215c345585fff3de1db3f",'_blank', 'noopener,noreferrer');
+    window.open(x,'_blank', 'noopener,noreferrer');
+    console.log(x)
+  }
 
   return (
     <>
@@ -151,19 +157,20 @@ const Detail = () => {
           ></div>
           <div id="content-detail" className="mb-1 movie-content container">
             <div className="movie-content__info">
-              <div style={{ textAlign:"center"}}>
+              <div style={{ textAlign: "center" }}>
                 <span className="info">
-                  {items.title || items.series}
+                  {titleSub ? titleSub : items.series}
                 </span>
               </div>
-              <div className="show-video-eps" style={{ marginLeft: "10px" }}>
-                {
-                  tipe !== "Anime" ? (
+              <div className="show-video-eps">
+                <div className="container-video">
+                  {tipe !== "Anime" ? (
                     <iframe
                       className="background-video"
                       src={items.stream_link}
                       type="video/mp4"
-                      style={{ width: "640", height: "360" }}
+                      allowFullScreen="true"
+                      webkitallowfullscreen
                       autoPlay
                     ></iframe>
                   ) : (
@@ -171,234 +178,133 @@ const Detail = () => {
                       className="background-video"
                       ref={link_stream}
                       type="video/mp4"
-                      style={{ width: "640", height: "360" }}
+                      allowFullScreen="true"
+                      webkitallowfullscreen
                       autoPlay
                     ></iframe>
-                  )
-                  // <video width="640" height="360" controls >
-                  //       <source ref={link_stream} type="video/mp4"/>
-                  // </video>
-                }
+                  )}
+                </div>
                 <div className="scroll-episode">
-                  <span className="info">EPISODE</span>
+                  <span className="info" style={{ marginLeft: "10px" }}>
+                    {" "}
+                    EPISODE
+                  </span>
                   <ul className="show-episode">
                     {items.itemanime ? Test(items.itemanime) : Test("x")}
                   </ul>
                 </div>
               </div>
-              <ul className="group-link-download">
-                {/* {items.itemanime ? <div>data</div> : null } */}
-                <li className="link-download-title">
-                  <span>LINK DOWNLOAD : </span>
-                </li>
-                <li className="link-download">
-                  <Popup
-                    contentStyle={{ width: "350px" }}
-                    trigger={
-                      <a className="cursor-anime">
-                        <span>GOOGLE DRIVE</span>
-                      </a>
-                    }
-                    position="right center"
+              <div className="dropdown-link">
+                <span style={{ fontWeight: "600" }}>
+                  Google Drive <BsDownload />
+                </span>
+                <div className="dropdown-content-link">
+                  <a
+                    className="cursor-anime"
+                    onClick={()=>openNewLink(link_360[0])}
                   >
-                    <div>
-                      <div className="link-download">
-                        <a
-                          className="cursor-anime"
-                          href={link_360[0]}
-                          target="_blank"
-                        >
-                          <span>360</span>
-                        </a>
-                      </div>
-                      <div className="link-download">
-                        <a
-                          className="cursor-anime"
-                          href={link_480[0]}
-                          target="_blank"
-                        >
-                          <span>480</span>
-                        </a>
-                      </div>
-
-                      <div className="link-download">
-                        <a
-                          className="cursor-anime"
-                          href={link_720[0]}
-                          target="_blank"
-                        >
-                          <span>720</span>
-                        </a>
-                      </div>
-                      <div className="link-download">
-                        <a
-                          className="cursor-anime"
-                          href={link_1080[0]}
-                          target="_blank"
-                        >
-                          <span>1080</span>
-                        </a>
-                      </div>
-                    </div>
-                    {/* <button>Click here</button> */}
-                  </Popup>
-                </li>
-                <li className="link-download">
-                  <Popup
-                    contentStyle={{ width: "350px" }}
-                    trigger={
-                      <a className="cursor-anime">
-                        <span>ZippyShare</span>
-                      </a>
-                    }
-                    position="right center"
+                  {link_360[0]==undefined ? <span style={{textDecoration:"line-through"}}>360p</span>:<span>360p</span>}
+                  
+                  </a>
+                  <br/>
+                  <a
+                    className="cursor-anime"
+                    onClick={()=>openNewLink(link_480[0])}
                   >
-                    <div>
-                      <div className="link-download">
-                        <a
-                          className="cursor-anime"
-                          href={link_360[1]}
-                          target="_blank"
-                        >
-                          <span>360</span>
-                        </a>
-                      </div>
-                      <div className="link-download">
-                        <a
-                          className="cursor-anime"
-                          href={link_480[1]}
-                          target="_blank"
-                        >
-                          <span>480</span>
-                        </a>
-                      </div>
-
-                      <div className="link-download">
-                        <a
-                          className="cursor-anime"
-                          href={link_720[1]}
-                          target="_blank"
-                        >
-                          <span>720</span>
-                        </a>
-                      </div>
-                      <div className="link-download">
-                        <a
-                          className="cursor-anime"
-                          href={link_1080[1]}
-                          target="_blank"
-                        >
-                          <span>1080</span>
-                        </a>
-                      </div>
-                    </div>
-                    {/* <button>Click here</button> */}
-                  </Popup>
-                </li>
-                <li className="link-download">
-                  <Popup
-                    contentStyle={{ width: "350px" }}
-                    trigger={
-                      <a className="cursor-anime">
-                        <span>DOOD</span>
-                      </a>
-                    }
-                    position="right center"
+                    {link_480[0]==undefined ? <span style={{textDecoration:"line-through"}}>480p</span>:<span>480p</span>}
+                    
+                  </a>
+                  <br/>
+                  <a
+                    className="cursor-anime"
+                    onClick={()=>openNewLink(link_720[0])}
                   >
-                    <div>
-                      <div className="link-download">
-                        <a
-                          className="cursor-anime"
-                          href={link_360[2]}
-                          target="_blank"
-                        >
-                          <span>360</span>
-                        </a>
-                      </div>
-                      <div className="link-download">
-                        <a
-                          className="cursor-anime"
-                          href={link_480[2]}
-                          target="_blank"
-                        >
-                          <span>480</span>
-                        </a>
-                      </div>
-
-                      <div className="link-download">
-                        <a
-                          className="cursor-anime"
-                          href={link_720[2]}
-                          target="_blank"
-                        >
-                          <span>720</span>
-                        </a>
-                      </div>
-                      <div className="link-download">
-                        <a
-                          className="cursor-anime"
-                          href={link_1080[2]}
-                          target="_blank"
-                        >
-                          <span>1080</span>
-                        </a>
-                      </div>
-                    </div>
-                    {/* <button>Click here</button> */}
-                  </Popup>
-                </li>
-                <li className="link-download">
-                  <Popup
-                    contentStyle={{ width: "350px" }}
-                    trigger={
-                      <a className="cursor-anime">
-                        <span>TERABOX</span>
-                      </a>
-                    }
-                    position="right center"
+                    {link_720[0]==undefined ? <span style={{textDecoration:"line-through"}}>720p</span>:<span>720p</span>}
+                    
+                  </a>
+                  <br/>
+                  <a
+                    className="cursor-anime"
+                    onClick={()=>openNewLink(link_1080[0])}
                   >
-                    <div>
-                      <div className="link-download">
-                        <a
-                          className="cursor-anime"
-                          href={link_360[3]}
-                          target="_blank"
-                        >
-                          <span>360</span>
-                        </a>
-                      </div>
-                      <div className="link-download">
-                        <a
-                          className="cursor-anime"
-                          href={link_480[3]}
-                          target="_blank"
-                        >
-                          <span>480</span>
-                        </a>
-                      </div>
-
-                      <div className="link-download">
-                        <a
-                          className="cursor-anime"
-                          href={link_720[3]}
-                          target="_blank"
-                        >
-                          <span>720</span>
-                        </a>
-                      </div>
-                      <div className="link-download">
-                        <a
-                          className="cursor-anime"
-                          href={link_1080[3]}
-                          target="_blank"
-                        >
-                          <span>1080</span>
-                        </a>
-                      </div>
-                    </div>
-                  </Popup>
-                </li>
-              </ul>
+                    {link_1080[0]==undefined ? <span style={{textDecoration:"line-through"}}>1080p</span>:<span>1080p</span>}
+                  </a>
+                </div>
+              </div>
+              <div className="dropdown-link">
+                <span style={{ fontWeight: "600" }}>
+                  DOOD <BsDownload />
+                </span>
+                <div className="dropdown-content-link">
+                  <a
+                    className="cursor-anime"
+                    onClick={()=>openNewLink(link_360[1])}
+                  >
+                  {link_360[1]==undefined ? <span style={{textDecoration:"line-through"}}>360p</span>:<span>360p</span>}
+                  
+                  </a>
+                  <br/>
+                  <a
+                    className="cursor-anime"
+                    onClick={()=>openNewLink(link_480[1])}
+                  >
+                    {link_480[1]==undefined ? <span style={{textDecoration:"line-through"}}>480p</span>:<span>480p</span>}
+                    
+                  </a>
+                  <br/>
+                  <a
+                    className="cursor-anime"
+                    onClick={()=>openNewLink(link_720[1])}
+                  >
+                    {link_720[1]==undefined ? <span style={{textDecoration:"line-through"}}>720p</span>:<span>720p</span>}
+                    
+                  </a>
+                  <br/>
+                  <a
+                    className="cursor-anime"
+                    onClick={()=>openNewLink(link_1080[1])}
+                  >
+                    {link_1080[1]==undefined ? <span style={{textDecoration:"line-through"}}>1080p</span>:<span>1080p</span>}
+                  </a>
+                </div>
+              </div>
+              <div className="dropdown-link">
+                <span style={{ fontWeight: "600" }}>
+                  ZippyShare <BsDownload />
+                </span>
+                <div className="dropdown-content-link">
+                  <a
+                    className="cursor-anime"
+                    onClick={()=>openNewLink(link_360[2])}
+                  >
+                  {link_360[2]==undefined ? <span style={{textDecoration:"line-through"}}>360p</span>:<span>360p</span>}
+                  
+                  </a>
+                  <br/>
+                  <a
+                    className="cursor-anime"
+                    onClick={()=>openNewLink(link_480[2])}
+                  >
+                    {link_480[2]==undefined ? <span style={{textDecoration:"line-through"}}>480p</span>:<span>480p</span>}
+                    
+                  </a>
+                  <br/>
+                  <a
+                    className="cursor-anime"
+                    onClick={()=>openNewLink(link_720[2])}
+                  >
+                    {link_720[2]==undefined ? <span style={{textDecoration:"line-through"}}>720p</span>:<span>720p</span>}
+                    
+                  </a>
+                  <br/>
+                  <a
+                    className="cursor-anime"
+                    onClick={()=>openNewLink(link_1080[2])}
+                  >
+                    {link_1080[2]==undefined ? <span style={{textDecoration:"line-through"}}>1080p</span>:<span>1080p</span>}
+                  </a>
+                </div>
+              </div>
               <br />
               <div className="show-poster-info" style={{ marginLeft: "10px" }}>
                 <div className="movie-content__poster">
@@ -438,14 +344,14 @@ const Detail = () => {
             </div>
           </div>
           <div className="section mb-3">
-          <div className="section__header mb-2">
-            <h2>Trending Movies</h2>
-            <Link to="/Movie/popular">
-              <OutlineButton className="small">View more</OutlineButton>
-            </Link>
+            <div className="section__header mb-2">
+              <h2>Trending Movies</h2>
+              <Link to="/Movie/popular">
+                <OutlineButton className="small">View more</OutlineButton>
+              </Link>
+            </div>
+            <MovieList tipe={tp.movie} category={category.popular} />
           </div>
-          <MovieList tipe={tp.movie} category={category.popular} />
-        </div>
         </>
       ))}
     </>

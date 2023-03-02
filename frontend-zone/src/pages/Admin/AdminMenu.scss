@@ -1,6 +1,7 @@
 @use "../../scss/" as *;
 
 .movie-content{
+    display: block;
     margin-bottom: 100px;
 }
 
@@ -32,14 +33,15 @@
     }
 }
 .movie-content__info1{
-    
+    display: grid;
+    grid-template-columns: auto auto auto;
+    width: 100%;
     position: relative;
     left: 10px;
     top: 1px;
     z-index: 1;
     border-radius:$border-radius;
     padding-left: 0;
-    height: 700px;
 }
 .btn-save {
     border: 4px solid transparent;
@@ -54,9 +56,9 @@
     position: relative;
 }
 
-.btn-outline {
-    border: 5px solid $white;
-    border-radius: $border-radius;
+.btn-outline-menu {
+    border: 2px solid $white;
+    border-radius: 2px;
     background-color: transparent;
     padding: 0.25rem 1.5rem;
     font-size: 1rem;
@@ -77,12 +79,12 @@
     margin-top: 10px;
 }
 
-.btn-outline:hover {
+.btn-outline-menu:hover {
     box-shadow: unset;
     color: $main-color;
     background-color: $white;
 }
-.btn-outline_blank {
+.btn-outline-menu_blank {
     
     box-shadow: unset;
     color: $main-color;

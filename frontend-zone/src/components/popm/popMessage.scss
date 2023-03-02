@@ -1,0 +1,239 @@
+@use "../../scss/" as *;
+.popup-container {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+.popup-body {
+    width: 50%;
+    position: absolute;
+    left: 10%;
+    right: 10%;
+    bottom: 30%;
+    top: 30%;
+    text-align: center;
+    margin: auto;
+    border-radius: 15px;
+    @include tablet{
+        left: -0%;
+    }
+}
+
+.popup-body .lines{
+    position: absolute;
+    inset: 0;
+    background-color: rgb(30, 233, 50);
+    overflow: hidden;
+    
+}
+
+// .popup-body .lines{
+//     content: '';
+//     position: absolute;
+//     top: 50%;
+//     left: 50%;
+//     width: 100%;
+//     height: 200px;
+//     background: linear-gradient(transparent,#f90250,#f90250,#f90250,transparent);
+//     animation: animate 4s linear infinite;
+//     animation-play-state: paused;
+
+// }
+.popup-body:hover .lines::before{
+    animation-play-state: running;
+
+}
+
+@keyframes animate{
+    0%{
+        transform: translate(-50%, -50%) rotate(0deg);
+
+    }
+    100%{
+        transform: translate(-50%, -50%) rotate(360deg);
+        
+    }
+}
+
+.popup-body .lines::after{
+    content: '';
+    position: absolute;
+    inset: 3px;
+    background:rgba(33, 33, 33, 1);
+
+}
+
+.popup-body .imgbx{
+   position: absolute;
+   top: -80px;
+   left: 50%;
+
+   width: 150px;
+   height: 150px;
+   transform: translateX(-50%);
+   background: rgb(255, 255, 255);
+   transition: 0.5s;
+   z-index: 10;
+   overflow: hidden;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   @include tablet{
+    width: 100px;
+    height: 100px;
+    top: -20px;
+   }
+}
+
+// .popup-body:hover .imgbx{
+//     top: 25px;
+//     width: 250px;
+//     height: 250px;
+// }
+.popup-body .imgbx::before{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 500px;
+    height: 150px;
+    background: linear-gradient(transparent,#f90250,#f90250,#f90250,transparent);
+    animation: animate2 6s linear infinite;
+    
+}
+.popup-body:hover .imgbx::before{
+    animation-play-state: running;
+}
+
+@keyframes animate2{
+    0%{
+        transform: translate(-50%, -50%) rotate(360deg);
+
+    }
+    100%{
+        transform: translate(-50%, -50%) rotate(0deg);
+        
+    }
+}
+
+.popup-body .imgbx::after{
+    content: '';
+    position: absolute;
+    inset: 3px;
+    background: #292929;
+}
+
+.popup-body .imgbx img{
+   
+    position: absolute;
+    width: 100px;
+    z-index: 1;
+    // filter: invert(1);
+    opacity: 0.5s;
+    transition: 0.5s;
+    color: #ff3c7b;
+    @include tablet{
+        width: 50px;
+    }
+}
+.popup-body:hover .imgbx img{
+   
+    
+    opacity:1;
+}
+
+.popup-body .content-message{
+   
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    overflow: hidden;
+}
+
+.popup-body .content-message .content-message-details{
+   
+    padding: 30px 30px;
+    text-align: center;
+    width: 100%;
+    transition: 0.5s;
+    transform: translateY(0px);
+
+}
+
+// .popup-body:hover .content-message .content-message-details{
+//     transform: translateY(0px);
+    
+// }
+
+.popup-body .content-message .content-message-details h2{ 
+    font-size: 1.5em;
+    font-weight: 500;
+    color: #60e256;
+    line-height: 1.2em;
+    
+}
+
+.popup-body .content-message .content-message-details p{ 
+    color: white;
+    
+}
+
+
+
+.popup-body .content-message .content-message-details a{ 
+    display: inline-block;
+    padding: 5px 5px ;
+    background: #1ff010;
+    color: #fbfbfb;
+    margin-top: 10px;
+    font-weight: 500;
+    text-decoration: none;
+    opacity: 0.3;
+    transition: 0.5s;
+    @include tablet{
+        
+    opacity: 1;
+    }
+    
+}
+
+.popup-body:hover .content-message .content-message-details p,
+.popup-body:hover .content-message .content-message-details a{ 
+    opacity: 1;
+    
+}
+
+
+
+
+// .message{
+//     color: black;
+// }
+// .logo-pop{
+//     position: absolute;
+//     margin-left: -40%;
+//     margin-top: -10%;
+//     font-size: 2.5rem;
+//     font-weight: 600;
+
+//     // @include flex(center, unset);
+
+//     img {
+//         margin-right: 10px;
+//         width: 100px;
+
+//         @include mobile {
+//             width: 30px;
+//             margin-right: 0;
+//         }
+//     }
+// }

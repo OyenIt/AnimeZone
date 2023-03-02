@@ -11,7 +11,7 @@ import apiConfig from '../../api/apiConfig';
 import "react-datepicker/dist/react-datepicker.css";
 import bg from '../../assets/footer-bg.jpg';
 import bg_home from '../../assets/ic_home.png';
-
+import {FaHome} from 'react-icons/fa';
 const AddAnime = () => {
     const [backdrop,setbackdrop] = useState("")
     const [poster,setposter] = useState("")
@@ -144,7 +144,7 @@ const AddAnime = () => {
         </div> */}
         <div className="movie-content__info">
             <div className="genres" >
-              <Link to="/basecamp/menu"><button className='btn-outline' style={{backgroundImage: 'url(' + bg_home + ')', height:"50px",width:"50px",backgroundSize: 'cover',}} ></button></Link>
+              <Link to="/basecamp/menu"><FaHome size="40px"/></Link>
             </div>
             <div className='text-center'>
             

@@ -13,6 +13,9 @@ import bg from '../../assets/footer-bg.jpg';
 
 import { Link } from 'react-router-dom';
 import bg_home from '../../assets/ic_home.png';
+
+import {FaHome} from 'react-icons/fa';
+
 const AddMovie = () => {
 
     const [backdrop,setbackdrop] = useState("")
@@ -165,7 +168,7 @@ const AddMovie = () => {
         </div> */}
         <div className="movie-content-admin__info">
         <div className="genres" >
-              <Link to="/basecamp/menu"><button className='btn-outline' style={{backgroundImage: 'url(' + bg_home + ')', height:"50px",width:"50px",backgroundSize: 'cover',}} ></button></Link>
+              <Link to="/basecamp/menu"><FaHome size="40px"/></Link>
             </div>
             <div className='text-center'>
             <h1>SETUP ITEM</h1>

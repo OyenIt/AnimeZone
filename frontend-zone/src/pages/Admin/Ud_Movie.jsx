@@ -12,6 +12,10 @@ import bg from '../../assets/footer-bg.jpg';
 
 import { Link } from 'react-router-dom';
 import bg_home from '../../assets/ic_home.png';
+
+import {FaHome} from 'react-icons/fa';
+
+import {RxUpdate} from 'react-icons/rx';
 export const Ud_Movie = () => {
 
     const [items, setItems] = useState([])
@@ -232,13 +236,13 @@ export const Ud_Movie = () => {
         <div className="movie-content__poster">
           
         <div className="genres" >
-              <Link to="/basecamp/menu"><button className='btn-outline' style={{backgroundImage: 'url(' + bg_home + ')', height:"50px",width:"50px",backgroundSize: 'cover',}} ></button></Link>
+              <Link to="/basecamp/menu"><FaHome size="40px"/></Link>
             </div>
         </div>
         <div className="movie-content__info">
         {showTables ? (
         <>
-        <button onClick={changeStateTables}> Display </button>
+        <a onClick={changeStateTables}><RxUpdate size="30px" /></a>
         <div className='show-list-anime'>
         <div class="table-container">
             <table className='table-series-anime'>
@@ -282,7 +286,7 @@ export const Ud_Movie = () => {
             </>
         ) : (
           <>
-          <button onClick={changeStateTables}> Hide </button>
+          <a onClick={changeStateTables}><RxUpdate size="30px" /></a>
           <div className='show-input-form'>
             <ul className='grid-container'>
                 <li><h4>BACKDROP</h4></li>

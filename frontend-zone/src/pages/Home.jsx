@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import { OutlineButton } from "../components/button/Button";
@@ -49,7 +49,17 @@ const Home = () => {
     "Thriller",
     "Vampire",
   ];
-
+  // // var first_visit = false;
+  // checkFirstVisit();
+  // function checkFirstVisit(){
+  //     if(localStorage.getItem('was_visited')){
+  //         return;
+  //     }
+  //     setOpen(true);
+  //     localStorage.setItem('was_visited', 1);
+  //     console.log(localStorage.getItem('was_visited'))
+  // }
+  // // console.log(first_visit);
   return (
     <>
       <HeroSlide />
