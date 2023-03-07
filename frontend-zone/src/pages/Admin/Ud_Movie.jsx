@@ -35,7 +35,7 @@ export const Ud_Movie = () => {
     const [rate,setrate] = useState(0)
     const [release,setrelease] = useState(new Date())
     const [status,setstatus] = useState("")
-    const [trailer,settrailer] = useState("")
+    const [stream,setstream] = useState("")
     // const [poster,setposter] = useState("")
     
     const [id_item, setidItem] = useState(0)
@@ -134,7 +134,7 @@ export const Ud_Movie = () => {
         formField.append('rate',rate)
         formField.append('release',release.getFullYear()+"-"+(release.getMonth()+1) +"-"+release.getDate())
         formField.append('status',status)
-        formField.append('trailer_link',trailer)
+        formField.append('stream_link',stream)
         try {
             axios.defaults.headers.common['Authorization'] = "Bearer " + localStorage.getItem('access_token')
             axios
@@ -175,7 +175,7 @@ export const Ud_Movie = () => {
             setrate(val.rate)
             // setrelease(val.title)
             setstatus(val.status)
-            settrailer(val.trailer_link)
+            setstream(val.stream_link)
             for (let index = 0; index < val.link_360.length; index++) {
                 setlink_360([val.link_360[index]])
                 
@@ -235,14 +235,22 @@ export const Ud_Movie = () => {
     <div className="mb-2 movie-content container">
         <div className="movie-content__poster">
           
-        <div className="genres" >
+        {/* <div className="genres" >
               <Link to="/basecamp/menu"><FaHome size="40px"/></Link>
-            </div>
+            </div> */}
         </div>
-        <div className="movie-content__info">
+        <div className="movie-content-admin__info">
+        <div className="text-center">
+          <h1>SETUP ITEM</h1>
+        </div>
+        <hr/>
         {showTables ? (
         <>
-        <a onClick={changeStateTables}><RxUpdate size="30px" /></a>
+        {/* <a onClick={changeStateTables}><RxUpdate size="30px" /></a> */}
+        <div className="opsi-admin" >
+              <Link to="/basecamp/menu" style={{marginRight:"5px"}}><FaHome size="40px"/></Link>
+              <a onClick={changeStateTables} style={{textAlign:"center",padding:"10px"}}><RxUpdate size="30px" /></a>
+        </div>
         <div className='show-list-anime'>
         <div class="table-container">
             <table className='table-series-anime'>
@@ -286,7 +294,11 @@ export const Ud_Movie = () => {
             </>
         ) : (
           <>
-          <a onClick={changeStateTables}><RxUpdate size="30px" /></a>
+          {/* <a onClick={changeStateTables}><RxUpdate size="30px" /></a> */}
+          <div className="opsi-admin" >
+              
+              <a onClick={changeStateTables} style={{textAlign:"center",padding:"10px"}}><RxUpdate size="30px" /></a>
+            </div>
           <div className='show-input-form'>
             <ul className='grid-container'>
                 <li><h4>BACKDROP</h4></li>
@@ -682,10 +694,10 @@ export const Ud_Movie = () => {
                         </li>
                     </ul>
                 </li>
-                <li><h4>TRAILER</h4></li>
+                <li><h4>STREAM</h4></li>
                 <li>:</li>
-                <li><input className='input-data' type="text" placeholder="Enter Trailer" name='trailer' value={trailer}
-                    onChange={(e) => settrailer(e.target.value)}/></li>
+                <li><input className='input-data' type="text" placeholder="Enter Trailer" name='trailer' value={stream}
+                    onChange={(e) => setstream(e.target.value)}/></li>
             </ul>
             <div className='series'>
                 <img className='poster' src={poster} alt="" />
@@ -694,6 +706,9 @@ export const Ud_Movie = () => {
               
           </div>
           <button className='btn-save' onClick={UpdateItem}> SAVE </button>
+          <br/>
+          <br/>
+          <br/>
           </>
           
         )}

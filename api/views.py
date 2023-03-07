@@ -61,7 +61,6 @@ class detailMovie(viewsets.ModelViewSet):
     def get_queryset(self):
         slug = self.kwargs['slug']
         return AzItemMovie.objects.filter(slug=slug)
-    
 
 class searchMovie(generics.ListAPIView):
     serializer_class = AzMovieSerializer
@@ -116,6 +115,7 @@ class DetailAnime(generics.ListAPIView):
     def get_queryset(self):
         slug = self.kwargs['slug']
         return AzItemAnime.objects.filter(slug=slug)
+    
     
 class DetailSubAnime(generics.ListAPIView):
     serializer_class = AzSubItemAnimeSerializer

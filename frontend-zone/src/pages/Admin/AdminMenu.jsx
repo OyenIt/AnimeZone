@@ -18,7 +18,18 @@ const AdminMenu = () => {
     } else {
       (async () => {
         try {
-          axios.defaults.headers.common["Authorization"] =
+          if (localStorage.getItem("access_token") === null) {
+            axios.defaults.headers.common["Authorization"] =
+            "Bearer " + localStorage.getItem("refresh_token");
+          axios
+            .get(apiConfig.baseUrl + "home/", {
+              headers: { "Content-Type": "application/json" },
+            })
+            .then((res) => {
+              setMessage(res.data.message);
+            });
+          }else{
+            axios.defaults.headers.common["Authorization"] =
             "Bearer " + localStorage.getItem("access_token");
           axios
             .get(apiConfig.baseUrl + "home/", {
@@ -26,9 +37,9 @@ const AdminMenu = () => {
             })
             .then((res) => {
               setMessage(res.data.message);
-
-              // console.log(res.data.message)
             });
+          }
+          
           setMy_friends(true);
         } catch (e) {
           setMy_friends(false);

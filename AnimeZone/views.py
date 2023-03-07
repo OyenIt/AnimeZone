@@ -7,7 +7,6 @@ from rest_framework.permissions import IsAuthenticated
 
 class HomeView(APIView):
    permission_classes = (IsAuthenticated, )
-   print(IsAuthenticated,"not okey")
    def get(self, request):
        content = {'message': 'Welcome My Brother'}
        return Response(content)

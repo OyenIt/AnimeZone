@@ -200,14 +200,23 @@ export const Ud_Anime = () => {
     <div className="mb-2 movie-content container">
         <div className="movie-content__poster">
           
-        <div className="genres" >
+        {/* <div className="genres" >
               <Link to="/basecamp/menu"><FaHome size="40px"/></Link>
-            </div>
+            </div> */}
         </div>
-        <div className="movie-content__info">
+        
+        <div className="movie-content-admin__info">
+        <div className="text-center">
+          <h1>SETUP ITEM</h1>
+        </div>
+        <hr/>
         {showTables ? (
         <>
-        <a onClick={changeStateTables}><RxUpdate size="30px" /></a>
+        <div className="opsi-admin" >
+              <Link to="/basecamp/menu" style={{marginRight:"5px"}}><FaHome size="40px"/></Link>
+              <a onClick={changeStateTables} style={{textAlign:"center",padding:"10px"}}><RxUpdate size="30px" /></a>
+        </div>
+        {/* <a onClick={changeStateTables}><RxUpdate size="30px" /></a> */}
         <div className='show-list-anime'>
         <div class="table-container">
             <table className='table-series-anime'>
@@ -251,7 +260,11 @@ export const Ud_Anime = () => {
             </>
         ) : (
           <>
-          <a onClick={changeStateTables}><RxUpdate size="30px" /></a>
+          {/* <a onClick={changeStateTables}><RxUpdate size="30px" /></a> */}
+          <div className="opsi-admin" >
+              
+              <a onClick={changeStateTables} style={{textAlign:"center",padding:"10px"}}><RxUpdate size="30px" /></a>
+            </div>
           <div className='show-input-form'>
             <ul className='grid-container'>
                 <li><h4>BACKDROP</h4></li>
@@ -414,6 +427,10 @@ export const Ud_Anime = () => {
               
           </div>
           <button className='btn-save' onClick={UpdateItem}> SAVE </button>
+          <br/>
+          <br/>
+          <br/>
+          
           </>
           
         )}

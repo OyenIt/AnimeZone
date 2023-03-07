@@ -5,7 +5,9 @@
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-
+    @include mobile{
+        height: 25vh;
+    }
     &::before {
         content: "";
         position: absolute;
@@ -133,6 +135,7 @@
     display: grid;
     grid-template-rows: auto auto ;
     grid-template-columns: 75% auto;
+    margin-left: 10px;
 }
 .poster{
     width: 50%;
@@ -223,4 +226,9 @@ th {
     border: 1px solid black;
     margin-bottom: 20px;
     
+}
+.opsi-admin{
+    display: flex;
+    text-align: center;
+    padding: 10px;
 }

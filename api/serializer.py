@@ -6,6 +6,7 @@ class AzItemAnimeSerializer(serializers.ModelSerializer):
     class Meta:
         model = AzItemAnime
         fields = "__all__"
+        ordering = ['AzSubItemAnime__episode']
 class AzSubItemAnimeSerializer(serializers.ModelSerializer):
     class Meta:
         model = AzSubItemAnime

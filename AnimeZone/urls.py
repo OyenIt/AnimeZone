@@ -7,8 +7,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 from . import views as vs
 from rest_framework_simplejwt import views as jwt_views
-router = routers.SimpleRouter()        
-# router = routers.DefaultRouter()            
+# router = routers.SimpleRouter()        
+router = routers.DefaultRouter()            
 router.register(r'AzItemAnime', views.AzItemAnimeView, 'itemview')
 router.register(r'AzSubItemAnime', views.AzSubItemAnimeView, 'subitemview')
 router.register(r'AzMovie', views.AzItemMovieView, 'itemmovie')

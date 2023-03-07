@@ -16,18 +16,16 @@ import {FaHome} from 'react-icons/fa';
 import {RxUpdate} from 'react-icons/rx';
 
 const AddSubAnime = () => {
-    var link_360 = ['','','','',''];
-    var link_480 = ['','','','',''];
-    var link_720 = ['','','','',''];
-    var link_1080 = ['','','','',''];
+    
     const [poster,setposter] = useState("")
     const [series,setseries] = useState("")
     const [category,setcategory] = useState([])
     const [title,settitle] = useState("")
-    var   [link_360,setlink_360] = useState([])
-    var   [link_480,setlink_480] = useState([])
-    var   [link_720,setlink_720] = useState([])
-    var   [link_1080,setlink_1080] = useState([])
+    const [episode,setEpisode] = useState(0)
+    const   [link_360,setlink_360] = useState([])
+    const   [link_480,setlink_480] = useState([])
+    const   [link_720,setlink_720] = useState([])
+    const   [link_1080,setlink_1080] = useState([])
     const [stream_link,setstream_link] = useState("")
     const [upload_at, setupload_at] = useState(new Date())
     const [slug,setslug] = useState("")
@@ -96,6 +94,7 @@ const AddSubAnime = () => {
         alert(series)
         formField.append('series',id_item)
         formField.append('title',title)
+        formField.append('episode',episode)
         link_360.map(function (lk1) { 
           formField.append('link_360',lk1)
         })
@@ -156,15 +155,21 @@ const AddSubAnime = () => {
     {My_Friends ? <><div className="banner" style={{backgroundImage: `url(${bg})`}}></div>
     <div className="mb-2 movie-content container">
         <div className="movie-content__poster">
-        <div className="genres" >
-              <Link to="/basecamp/menu"><FaHome size="40px"/></Link>
-            </div>
+        
         </div>
-        <div className="movie-content__info">
+        <div className="text-center">
+          <h1>SETUP ITEM</h1>
+        </div>
+
+        <hr />
+        <div className="movie-content-admin__info">
         {showTables ? (
         <>
+        <div className="opsi-admin" >
+              <Link to="/basecamp/menu" style={{marginRight:"5px"}}><FaHome size="40px"/></Link>
+              <a onClick={changeStateTables} style={{textAlign:"center",padding:"10px"}}><RxUpdate size="30px" /></a>
+        </div>
         {/* <button onClick={changeStateTables}> Display </button> */}
-        <a onClick={changeStateTables}><RxUpdate size="30px" /></a>
         <div className='show-list-anime'>
         <div class="table-container">
             <table className='table-series-anime'>
@@ -207,8 +212,10 @@ const AddSubAnime = () => {
           <>
 
           {/* <button onClick={changeStateTables}> Hide </button> */}
-          <a onClick={changeStateTables}><RxUpdate size="30px"/></a>
-          
+          <div className="opsi-admin" >
+              
+              <a onClick={changeStateTables} style={{textAlign:"center",padding:"10px"}}><RxUpdate size="30px" /></a>
+            </div>
           
           <div className='show-input-form'>
               <ul className='grid-container'>
@@ -216,6 +223,20 @@ const AddSubAnime = () => {
                 <li>:</li>
                 <li><input className='input-data' type="text" placeholder="Enter Title" name='title' value={title}
                     onChange={(e) => settitle(e.target.value)}/></li>
+                <li>
+                    <h4>EPISODE</h4>
+                  </li>
+                  <li>:</li>
+                  <li>
+                    <input
+                      className="input-data"
+                      type="text"
+                      placeholder="Enter Rate"
+                      name="rate"
+                      value={episode}
+                      onChange={(e) => setEpisode(e.target.value)}
+                    />
+                  </li>
                 <li><h4>UPLOAD AT</h4></li>
                 <li>:</li>
                 <li><DatePicker
@@ -270,131 +291,358 @@ const AddSubAnime = () => {
                     selected={upload_at}
                     onChange={(date) => setupload_at(new Date(date))}
                     /></li>
-                    <li><h4>LINK 360</h4></li>
-                <li>:</li>
-                <li>
-                    <ul className='container-link-dowload'>
-                        <li className='container-link-dowload-item'>
-                            <input className='input-data-link' type="text" placeholder="Google Drive" name='link1'
-                            onChange={(e) => link_360[0]=e.target.value}/>
-                            
-                        </li>
-                        <li className='container-link-dowload-item'>
-                            <input className='input-data-link' type="text" placeholder="Google Drive" name='link2'
-                             onChange={(e) => link_360[1]=e.target.value}/>
-                            
-                        </li>
-                        <li className='container-link-dowload-item'>
-                            <input className='input-data-link' type="text" placeholder="Google Drive" name='link3' 
-                            onChange={(e) => link_360[2]=e.target.value}/>
-                            
-                        </li>
-                        <li className='container-link-dowload-item'>
-                            <input className='input-data-link' type="text" placeholder="Google Drive" name='link4' 
-                            onChange={(e) => link_360[3]=e.target.value}/>
-                            
-                        </li>
-                        <li className='container-link-dowload-item'>
-                            <input className='input-data-link' type="text" placeholder="Google Drive" name='link5' 
-                            onChange={(e) => link_360[4]=e.target.value}/>
-                            
-                        </li>
+                    <li>
+                    <h4>LINK 360</h4>
+                  </li>
+                  <li>:</li>
+                  <li>
+                    <ul className="container-link-dowload">
+                      <li className="container-link-dowload-item">
+                        <input
+                          className="input-data-link"
+                          type="text"
+                          placeholder="Google Drive"
+                          name="link1"
+                          value={link_360[0]}
+                          onChange={(e) => {
+                            setlink_360((prevArr) => {
+                              const result = [...prevArr];
+                              result[0] = e.target.value;
+                              return result;
+                            });
+                          }}
+                        />
+                      </li>
+                      <li className="container-link-dowload-item">
+                        <input
+                          className="input-data-link"
+                          type="text"
+                          placeholder="Dood"
+                          name="link2"
+                          value={link_360[1]}
+                          onChange={(e) => {
+                            setlink_360((prevArr) => {
+                              const result = [...prevArr];
+                              result[1] = e.target.value;
+                              return result;
+                            });
+                          }}
+                        />
+                      </li>
+                      <li className="container-link-dowload-item">
+                        <input
+                          className="input-data-link"
+                          type="text"
+                          placeholder="ZippyShare"
+                          name="link3"
+                          value={link_360[2]}
+                          onChange={(e) => {
+                            setlink_360((prevArr) => {
+                              const result = [...prevArr];
+                              result[2] = e.target.value;
+                              return result;
+                            });
+                          }}
+                        />
+                      </li>
+                      <li className="container-link-dowload-item">
+                        <input
+                          className="input-data-link"
+                          type="text"
+                          placeholder="Soon..."
+                          name="link4"
+                          value={link_360[3]}
+                          onChange={(e) => {
+                            setlink_360((prevArr) => {
+                              const result = [...prevArr];
+                              result[3] = e.target.value;
+                              return result;
+                            });
+                          }}
+                        />
+                      </li>
+                      <li className="container-link-dowload-item">
+                        <input
+                          className="input-data-link"
+                          type="text"
+                          placeholder="Soon..."
+                          name="link5"
+                          value={link_360[4]}
+                          onChange={(e) => {
+                            setlink_360((prevArr) => {
+                              const result = [...prevArr];
+                              result[4] = e.target.value;
+                              return result;
+                            });
+                          }}
+                        />
+                      </li>
                     </ul>
-                </li>
-                <li><h4>LINK 480</h4></li>
-                <li>:</li>
-                <li>
-                    <ul className='container-link-dowload'>
-                        <li className='container-link-dowload-item'>
-                            <input className='input-data-link' type="text" placeholder="Google Drive" name='link6' 
-                            onChange={(e) =>link_480[0]=e.target.value}/>
-                            
-                        </li>
-                        <li className='container-link-dowload-item'>
-                            <input className='input-data-link' type="text" placeholder="Google Drive" name='link7'
-                            onChange={(e) => link_480[1]=e.target.value}/>
-                            
-                        </li>
-                        <li className='container-link-dowload-item'>
-                            <input className='input-data-link' type="text" placeholder="Google Drive" name='link8'
-                            onChange={(e) => link_480[2]=e.target.value}/>
-                            
-                        </li>
-                        <li className='container-link-dowload-item'>
-                            <input className='input-data-link' type="text" placeholder="Google Drive" name='link9' 
-                            onChange={(e) => link_480[3]=e.target.value}/>
-                            
-                        </li>
-                        <li className='container-link-dowload-item'>
-                            <input className='input-data-link' type="text" placeholder="Google Drive" name='link10' 
-                            onChange={(e) => link_480[4]=e.target.value}/>
-                            
-                        </li>
+                  </li>
+                  <li>
+                    <h4>LINK 480</h4>
+                  </li>
+                  <li>:</li>
+                  <li>
+                    <ul className="container-link-dowload">
+                      <li className="container-link-dowload-item">
+                        <input
+                          className="input-data-link"
+                          type="text"
+                          placeholder="Google Drive"
+                          name="link6"
+                          value={link_480[0]}
+                          onChange={(e) => {
+                            setlink_480((prevArr) => {
+                              const result = [...prevArr];
+                              result[0] = e.target.value;
+                              return result;
+                            });
+                          }}
+                        />
+                      </li>
+                      <li className="container-link-dowload-item">
+                        <input
+                          className="input-data-link"
+                          type="text"
+                          placeholder="Dood"
+                          name="link7"
+                          value={link_480[1]}
+                          onChange={(e) => {
+                            setlink_480((prevArr) => {
+                              const result = [...prevArr];
+                              result[1] = e.target.value;
+                              return result;
+                            });
+                          }}
+                        />
+                      </li>
+                      <li className="container-link-dowload-item">
+                        <input
+                          className="input-data-link"
+                          type="text"
+                          placeholder="ZippyShare"
+                          name="link8"
+                          value={link_480[2]}
+                          onChange={(e) => {
+                            setlink_480((prevArr) => {
+                              const result = [...prevArr];
+                              result[2] = e.target.value;
+                              return result;
+                            });
+                          }}
+                        />
+                      </li>
+                      <li className="container-link-dowload-item">
+                        <input
+                          className="input-data-link"
+                          type="text"
+                          placeholder="Soon..."
+                          name="link9"
+                          value={link_480[3]}
+                          onChange={(e) => {
+                            setlink_480((prevArr) => {
+                              const result = [...prevArr];
+                              result[3] = e.target.value;
+                              return result;
+                            });
+                          }}
+                        />
+                      </li>
+                      <li className="container-link-dowload-item">
+                        <input
+                          className="input-data-link"
+                          type="text"
+                          placeholder="Soon..."
+                          name="link10"
+                          value={link_480[4]}
+                          onChange={(e) => {
+                            setlink_480((prevArr) => {
+                              const result = [...prevArr];
+                              result[4] = e.target.value;
+                              return result;
+                            });
+                          }}
+                        />
+                      </li>
                     </ul>
-                    
-                </li>
-                <li><h4>LINK 720</h4></li>
-                <li>:</li>
-                <li>
-                    <ul className='container-link-dowload'>
-                        <li className='container-link-dowload-item'>
-                            <input className='input-data-link' type="text" placeholder="Google Drive" name='link11' 
-                            onChange={(e) => link_720[0]=e.target.value}/>
-                            
-                        </li>
-                        <li className='container-link-dowload-item'>
-                            <input className='input-data-link' type="text" placeholder="Google Drive" name='link12' 
-                            onChange={(e) => link_720[1]=e.target.value}/>
-                            
-                        </li>
-                        <li className='container-link-dowload-item'>
-                            <input className='input-data-link' type="text" placeholder="Google Drive" name='link13' 
-                            onChange={(e) => link_720[2]=e.target.value}/>
-                            
-                        </li>
-                        <li className='container-link-dowload-item'>
-                            <input className='input-data-link' type="text" placeholder="Google Drive" name='link14' 
-                            onChange={(e) => link_720[3]=e.target.value}/>
-                            
-                        </li>
-                        <li className='container-link-dowload-item'>
-                            <input className='input-data-link' type="text" placeholder="Google Drive" name='link15' 
-                            onChange={(e) => link_720[4]=e.target.value}/>
-                            
-                        </li>
+                  </li>
+                  <li>
+                    <h4>LINK 720</h4>
+                  </li>
+                  <li>:</li>
+                  <li>
+                    <ul className="container-link-dowload">
+                      <li className="container-link-dowload-item">
+                        <input
+                          className="input-data-link"
+                          type="text"
+                          placeholder="Google Drive"
+                          name="link11"
+                          value={link_720[0]}
+                          onChange={(e) => {
+                            setlink_720((prevArr) => {
+                              const result = [...prevArr];
+                              result[0] = e.target.value;
+                              return result;
+                            });
+                          }}
+                        />
+                      </li>
+                      <li className="container-link-dowload-item">
+                        <input
+                          className="input-data-link"
+                          type="text"
+                          placeholder="Dood"
+                          name="link12"
+                          value={link_720[1]}
+                          onChange={(e) => {
+                            setlink_720((prevArr) => {
+                              const result = [...prevArr];
+                              result[1] = e.target.value;
+                              return result;
+                            });
+                          }}
+                        />
+                      </li>
+                      <li className="container-link-dowload-item">
+                        <input
+                          className="input-data-link"
+                          type="text"
+                          placeholder="ZippyShare"
+                          name="link13"
+                          value={link_720[2]}
+                          onChange={(e) => {
+                            setlink_720((prevArr) => {
+                              const result = [...prevArr];
+                              result[2] = e.target.value;
+                              return result;
+                            });
+                          }}
+                        />
+                      </li>
+                      <li className="container-link-dowload-item">
+                        <input
+                          className="input-data-link"
+                          type="text"
+                          placeholder="Soon..."
+                          name="link14"
+                          value={link_720[3]}
+                          onChange={(e) => {
+                            setlink_720((prevArr) => {
+                              const result = [...prevArr];
+                              result[3] = e.target.value;
+                              return result;
+                            });
+                          }}
+                        />
+                      </li>
+                      <li className="container-link-dowload-item">
+                        <input
+                          className="input-data-link"
+                          type="text"
+                          placeholder="Soon..."
+                          name="link15"
+                          value={link_720[4]}
+                          onChange={(e) => {
+                            setlink_720((prevArr) => {
+                              const result = [...prevArr];
+                              result[4] = e.target.value;
+                              return result;
+                            });
+                          }}
+                        />
+                      </li>
                     </ul>
-                </li>
-                <li><h4>LINK 1080</h4></li>
-                <li>:</li>
-                <li>
-                    <ul className='container-link-dowload'>
-                        <li className='container-link-dowload-item'>
-                            <input className='input-data-link' type="text" placeholder="Google Drive" name='link16' 
-                            onChange={(e) => link_1080[0]=e.target.value}/>
-                            
-                        </li>
-                        <li className='container-link-dowload-item'>
-                            <input className='input-data-link' type="text" placeholder="Google Drive" name='link17' 
-                            onChange={(e) => link_1080[1]=e.target.value}/>
-                            
-                        </li>
-                        <li className='container-link-dowload-item'>
-                            <input className='input-data-link' type="text" placeholder="Google Drive" name='link18' 
-                            onChange={(e) => link_1080[2]=e.target.value}/>
-                            
-                        </li>
-                        <li className='container-link-dowload-item'>
-                            <input className='input-data-link' type="text" placeholder="Google Drive" name='link19' 
-                            onChange={(e) => link_1080[3]=e.target.value}/>
-                            
-                        </li>
-                        <li className='container-link-dowload-item'>
-                            <input className='input-data-link' type="text" placeholder="Google Drive" name='link20' 
-                            onChange={(e) => link_1080[4]=e.target.value}/>
-                            
-                        </li>
+                  </li>
+                  <li>
+                    <h4>LINK 1080</h4>
+                  </li>
+                  <li>:</li>
+                  <li>
+                    <ul className="container-link-dowload">
+                      <li className="container-link-dowload-item">
+                        <input
+                          className="input-data-link"
+                          type="text"
+                          placeholder="Google Drive"
+                          name="link16"
+                          value={link_1080[0]}
+                          onChange={(e) => {
+                            setlink_1080((prevArr) => {
+                              const result = [...prevArr];
+                              result[0] = e.target.value;
+                              return result;
+                            });
+                          }}
+                        />
+                      </li>
+                      <li className="container-link-dowload-item">
+                        <input
+                          className="input-data-link"
+                          type="text"
+                          placeholder="Dood"
+                          name="link17"
+                          value={link_1080[1]}
+                          onChange={(e) => {
+                            setlink_1080((prevArr) => {
+                              const result = [...prevArr];
+                              result[1] = e.target.value;
+                              return result;
+                            });
+                          }}
+                        />
+                      </li>
+                      <li className="container-link-dowload-item">
+                        <input
+                          className="input-data-link"
+                          type="text"
+                          placeholder="ZippyShare"
+                          name="link18"
+                          value={link_1080[2]}
+                          onChange={(e) => {
+                            setlink_1080((prevArr) => {
+                              const result = [...prevArr];
+                              result[2] = e.target.value;
+                              return result;
+                            });
+                          }}
+                        />
+                      </li>
+                      <li className="container-link-dowload-item">
+                        <input
+                          className="input-data-link"
+                          type="text"
+                          placeholder="Soon..."
+                          name="link19"
+                          value={link_1080[3]}
+                          onChange={(e) => {
+                            setlink_1080((prevArr) => {
+                              const result = [...prevArr];
+                              result[3] = e.target.value;
+                              return result;
+                            });
+                          }}
+                        />
+                      </li>
+                      <li className="container-link-dowload-item">
+                        <input
+                          className="input-data-link"
+                          type="text"
+                          placeholder="Soon..."
+                          name="link20"
+                          value={link_1080[4]}
+                          onChange={(e) => {
+                            setlink_1080((prevArr) => {
+                              const result = [...prevArr];
+                              result[4] = e.target.value;
+                              return result;
+                            });
+                          }}
+                        />
+                      </li>
                     </ul>
-                </li>
+                  </li>
                 <li><h4>STREAM</h4></li>
                 <li>:</li>
                 <li><input className='input-data' type="text" placeholder="Enter Stream" name='title' value={stream_link}
@@ -402,11 +650,15 @@ const AddSubAnime = () => {
               </ul>
               <div className='series'>
                 <img className='poster' src={poster} alt="" />
-                <h1>{series}</h1>
+                {/* <h1>{series}</h1> */}
               </div>
               
+          
           </div>
           <button className='btn-save' onClick={addItem}> SAVE </button>
+          <br/>
+          <br/>
+          <br/>
           </>
           
         )}

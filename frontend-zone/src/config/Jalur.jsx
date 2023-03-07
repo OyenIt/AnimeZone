@@ -16,7 +16,8 @@ import AddSubAnime from '../pages/Admin/AddSubAnime';
 import Ud_Movie from '../pages/Admin/Ud_Movie';
 import Ud_Anime from '../pages/Admin/Ud_Anime';
 import Ud_SubAnime from '../pages/Admin/Ud_SubAnime';
-
+import NotFound from '../pages/NotFound';
+// import AdsPage from '../pages/adsPage/adsPage'
 
 
 const Jalur = () => {
@@ -31,6 +32,11 @@ const Jalur = () => {
                 path='/basecamp/Update/series/:secret'
                 exac
                 element={<UpdateDelPage/>}
+            /> */}
+            {/* <Route
+                path='/generate-link-download'
+                exac
+                element={<AdsPage/>}
             /> */}
             <Route
                 path='/basecamp/ud_subanime'
@@ -129,6 +135,7 @@ const Jalur = () => {
                 exact
                 element={<Home/>}
             />
+            <Route path='/NotFound' element={<NotFound />} status={404} />
         </Routes>
     );
 }

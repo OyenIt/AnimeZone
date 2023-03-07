@@ -3,6 +3,9 @@
 .movie-content{
     display: block;
     margin-bottom: 100px;
+    @include mobile{
+        margin-bottom: 200px;
+    }
 }
 
 .banner {

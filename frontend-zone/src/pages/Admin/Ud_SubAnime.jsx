@@ -23,6 +23,8 @@ export const Ud_SubAnime = () => {
     const [idUpdateSub, setidUpdateSub] = useState(0)
 
     const [title,settitle] = useState("")
+    
+    const [episode,setEpisode] = useState(0)
     const [link_360,setlink_360] = useState([])
     const [link_480,setlink_480] = useState([])
     const [link_720,setlink_720] = useState([])
@@ -94,6 +96,8 @@ export const Ud_SubAnime = () => {
         
         formField.append('series',id_item)
         formField.append('title',title)
+        
+        formField.append('episode',episode)
         link_360.map(function (lk1) { 
           formField.append('link_360',lk1)
         })
@@ -172,7 +176,8 @@ export const Ud_SubAnime = () => {
             if (res.ok) return res.json()
           }).then((res) => {settitle(res.title);
             setlink_360(res.link_360);setlink_480(res.link_480);
-            setlink_720(res.link_720);setlink_1080(res.link_1080);setstream_link(res.stream_link);}
+            setlink_720(res.link_720);setlink_1080(res.link_1080);setstream_link(res.stream_link);
+          setEpisode(res.episode)}
           ).catch((err) => console.log(err));
     }
     
@@ -181,14 +186,22 @@ export const Ud_SubAnime = () => {
     {My_Friends ? <> <div className="banner" style={{backgroundImage: `url(${bg})`}}></div>
     <div className="mb-2 movie-content container">
         <div className="movie-content__poster">
-        <div className="genres" >
+        {/* <div className="genres" >
               <Link to="/basecamp/menu"><FaHome size="40px"/></Link>
-            </div>
+            </div> */}
         </div>
-        <div className="movie-content__info">
+        <div className="movie-content-admin__info">
+        <div className="text-center">
+          <h1>SETUP ITEM</h1>
+        </div>
+        <hr/>
         {showTables ? (
         <>
-        <a onClick={changeStateTables}><RxUpdate size="30px" /></a>
+        {/* <a onClick={changeStateTables}><RxUpdate size="30px" /></a> */}
+        <div className="opsi-admin" >
+              <Link to="/basecamp/menu" style={{marginRight:"5px"}}><FaHome size="40px"/></Link>
+              <a onClick={changeStateTables} style={{textAlign:"center",padding:"10px"}}><RxUpdate size="30px" /></a>
+        </div>
         <div className='show-list-anime'>
         <div class="table-container">
             <table className='table-series-anime'>
@@ -227,13 +240,30 @@ export const Ud_SubAnime = () => {
             </>
         ) : (
           <>
-          <a onClick={changeStateTables}><RxUpdate size="30px" /></a>
+          <div className="opsi-admin" >
+              
+              <a onClick={changeStateTables} style={{textAlign:"center",padding:"10px"}}><RxUpdate size="30px" /></a>
+            </div>
           <div className='show-input-form'>
               <ul className='grid-container'>
                 <li><h4>TITLE</h4></li>
                 <li>:</li>
                 <li><input className='input-data' type="text" placeholder="Enter Title" name='title' value={title}
                     onChange={(e) => settitle(e.target.value)}/></li>
+                <li>
+                    <h4>EPISODE</h4>
+                  </li>
+                  <li>:</li>
+                  <li>
+                    <input
+                      className="input-data"
+                      type="text"
+                      placeholder="Enter Rate"
+                      name="rate"
+                      value={episode}
+                      onChange={(e) => setEpisode(e.target.value)}
+                    />
+                  </li>
                 <li><h4>UPLOAD AT</h4></li>
                 <li>:</li>
                 <li><DatePicker
@@ -547,7 +577,7 @@ export const Ud_SubAnime = () => {
                                 {console.log(id_subitem)}
                                 {id_subitem.map((vls,vlsx)=>(
                                     <>
-                                      <li style={{textAlign:"left",overflow:"hidden", textOverflow:"ellipsis"}}><a onClick={(event) => {ShowSubSeries(vls);}}><span style={{fontWeight:"500"}}>{vlsx+1}</span></a></li>
+                                      <li style={{textAlign:"center",overflow:"hidden", textOverflow:"ellipsis"}}><a className="cursor-anime" onClick={(event) => {ShowSubSeries(vls);}}><span style={{fontWeight:"600"}}>{vlsx+1}</span></a></li>
                                     </>
                                     ))}
                                 
@@ -562,6 +592,9 @@ export const Ud_SubAnime = () => {
           </div>
           <button className='btn-save' onClick={UpdateSubSeries}> UPDATE </button>
           <button className='btn-save' style={{backgroundColor:"red"}}onClick={DeleteSubSeries}> DELETE </button>
+          <br/>
+          <br/>
+          <br/>
           </>
           
         )}
