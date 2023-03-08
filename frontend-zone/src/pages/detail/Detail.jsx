@@ -125,12 +125,11 @@ const Detail = () => {
         <>
           {x.map((value, valu31) => (
             <>
-              <li
-                style={{
+              <li>
+                <div style={{
                   borderColor: active === value ? "red" : "white",
                 }}
-                className="episode-list"
-              >
+                className="episode-list">
                 <a
                   className="cursor-anime"
                   onClick={(event) => {
@@ -140,6 +139,7 @@ const Detail = () => {
                 >
                   <span className="item-eps">{valu31 + 1}</span>
                 </a>
+                </div>
               </li>
             </>
           ))}
@@ -201,7 +201,7 @@ const Detail = () => {
                     <div className="scroll-episode">
                       <span className="info" style={{ marginLeft: "10px" }}>
                         {" "}
-                        EPISODE
+                        EPISODE 
                       </span>
                       <ul className="show-episode">
                         {items.itemanime ? Test(items.itemanime) : Test("x")}
@@ -444,7 +444,9 @@ const Detail = () => {
                           })}
                         </span>
                       </p>
-                      <p className="overview">{items.description}</p>
+                      <div className="description">
+                        <p className="overview">{items.description}</p>
+                      </div>
                     </div>
                   </div>
                 </div>

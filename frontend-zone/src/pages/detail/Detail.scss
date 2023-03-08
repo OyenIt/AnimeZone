@@ -15,7 +15,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     @include tablet{
-        margin-bottom: 100px;
+        margin-bottom: 10px;
     }
     &::before {
         content: "";
@@ -44,9 +44,26 @@
     margin-bottom: 50px;
     @include tablet{
         margin-bottom: 10px;
-        margin-top: -370px;
+        margin-top: -50px;
     }
 }
+
+.description{
+    height: 60%;
+    overflow: hidden;
+    @include mobile{
+        height: 30%;
+        font-size: 0.2em;
+    }
+
+}
+.description .overview{
+    // white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+    
+}
+
 .movie-content {
     @include flex(flex-start, flex-start);
     max-width: 1260px;
@@ -175,6 +192,9 @@ nav ul{overflow:scroll; overflow-x:scroll;}
     margin: 0px 0px 0px 0px;
     width: 100%;
     gap: 10px;
+    @include mobile{
+        height: 160px;
+    }
 }
 .group-link-download{
     // display: grid;
@@ -291,15 +311,15 @@ nav ul{overflow:scroll; overflow-x:scroll;}
 }
 .episode-list{
 
-    width: 60px;
+    width: 100px;
     height: 45px;
     padding: 6px;
     border: 2px solid $white;
-    border-radius: $border-radius;
+    border-radius: 2px;
     font-size: 1rem;
     font-weight: 600;
     background-color: $body-bg;
-    display: grid;
+    // display: grid;
     margin-right: 10px;
     margin-bottom: 1px;
     text-overflow: ellipsis;
@@ -308,6 +328,7 @@ nav ul{overflow:scroll; overflow-x:scroll;}
     @include mobile{
         margin-right: 5px;
         height: 20px;
+        width: 50px;
         // width: 20px;
         padding: 2px;
         border-radius: 3px;
