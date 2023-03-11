@@ -9,7 +9,7 @@ import getMonth from "date-fns/getYear";
 import { Link } from "react-router-dom";
 import apiConfig from "../../api/apiConfig";
 import "react-datepicker/dist/react-datepicker.css";
-import bg from "../../assets/footer-bg.jpg";
+import bg from "../../assets/header_bg.jpg";
 import { FaHome } from "react-icons/fa";
 const AddAnime = () => {
   const [backdrop, setbackdrop] = useState("");
@@ -89,6 +89,7 @@ const AddAnime = () => {
     "Harem",
     "Historical",
     "Horror",
+    "Isekai",
     "Josei",
     "Kids",
     "Magic",

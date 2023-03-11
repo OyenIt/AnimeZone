@@ -1,17 +1,17 @@
 @use "../../scss/" as *;
 
 .logo {
-    font-size: 2.5rem;
+    font-size: 1.5rem;
     font-weight: 600;
 
     @include flex(center, unset);
 
     img {
         margin-right: 10px;
-        width: 50px;
+        width: 30px;
 
         @include mobile {
-            width: 30px;
+            width: 15px;
             margin-right: 0;
         }
     }
@@ -50,9 +50,9 @@
 
         li {
             padding: 5px 0;
-            font-weight: 700;
+            font-weight: 600;
             position: relative;
-            font-size: 1.5rem;
+            font-size: 1.3em;
 
             &::after {
                 content: "";

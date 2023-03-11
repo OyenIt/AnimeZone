@@ -1,3 +1,4 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow:
+Disallow: /basecamp/
+Sitemap: http://enjenime.ml/sitemap.xml

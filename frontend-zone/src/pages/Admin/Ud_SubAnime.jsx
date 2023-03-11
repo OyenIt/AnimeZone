@@ -1,34 +1,27 @@
 import React, {useEffect,useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import { useParams } from 'react-router';
 import DatePicker from "react-datepicker";
 import getYear from "date-fns/getYear";
 import getMonth from "date-fns/getYear";
 import apiConfig from '../../api/apiConfig';
 import "react-datepicker/dist/react-datepicker.css";
-import bg from '../../assets/footer-bg.jpg';
+import bg from '../../assets/header_bg.jpg';
 import { Link } from 'react-router-dom';
-import bg_home from '../../assets/ic_home.png';
 import {FaHome} from 'react-icons/fa';
 import {RxUpdate} from 'react-icons/rx';
 
 export const Ud_SubAnime = () => {
-    const { secret} = useParams();
-    const navigate = useNavigate();
+    
     const [items, setItems] = useState([])
     const [id_item, setidItem] = useState(0)
     const [id_subitem, setidsubItem] = useState([])
-
     const [idUpdateSub, setidUpdateSub] = useState(0)
-
     const [title,settitle] = useState("")
-    
     const [episode,setEpisode] = useState(0)
-    const [link_360,setlink_360] = useState([])
-    const [link_480,setlink_480] = useState([])
-    const [link_720,setlink_720] = useState([])
-    const [link_1080,setlink_1080] = useState([])
+    const [link_360,setlink_360] = useState(['','','','',''])
+    const [link_480,setlink_480] = useState(['','','','',''])
+    const [link_720,setlink_720] = useState(['','','','',''])
+    const [link_1080,setlink_1080] = useState(['','','','',''])
     const [stream_link,setstream_link] = useState("")
     const [upload_at, setupload_at] = useState(new Date())
     const range = (start, end) => {
@@ -93,7 +86,6 @@ export const Ud_SubAnime = () => {
     // }, [])
     const UpdateSubSeries = () =>{
         let formField = new FormData()
-        
         formField.append('series',id_item)
         formField.append('title',title)
         
@@ -177,7 +169,8 @@ export const Ud_SubAnime = () => {
           }).then((res) => {settitle(res.title);
             setlink_360(res.link_360);setlink_480(res.link_480);
             setlink_720(res.link_720);setlink_1080(res.link_1080);setstream_link(res.stream_link);
-          setEpisode(res.episode)}
+            setEpisode(res.episode);
+          console.log(res.link_360[3])}
           ).catch((err) => console.log(err));
     }
     

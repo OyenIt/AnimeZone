@@ -5,17 +5,12 @@ import axios from 'axios';
 import DatePicker from "react-datepicker"
 import getYear from "date-fns/getYear"
 import getMonth from "date-fns/getYear"
-
 import apiConfig from '../../api/apiConfig';
-import bg from '../../assets/footer-bg.jpg';
-
-
+import bg from '../../assets/header_bg.jpg';
 import { Link } from 'react-router-dom';
-import bg_home from '../../assets/ic_home.png';
-
 import {FaHome} from 'react-icons/fa';
-
 import {RxUpdate} from 'react-icons/rx';
+
 export const Ud_Anime = () => {
     const [items, setItems] = useState([])
     const [backdrop,setbackdrop] = useState("")

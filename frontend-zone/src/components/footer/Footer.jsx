@@ -4,7 +4,7 @@ import "./Footer.scss";
 
 import { Link } from "react-router-dom";
 
-import bg from "../../assets/footer_bg1.png";
+import bg from "../../assets/footer_bg.png";
 import logo from "../../assets/logosnj_1.png";
 import {
   AiOutlineMail,

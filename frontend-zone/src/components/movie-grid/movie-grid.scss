@@ -14,6 +14,7 @@
     
 
     @include mobile {
+        // display: none;
         right: 1px;
         top: 1px;
     }
@@ -54,11 +55,16 @@
         margin-right: 10px;
     }
 }
-
+.genre-choice{
+    @include mobile{
+        display: none;
+    }
+}
 .movie-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(180px, 2fr));
     grid-gap: 50px;
+    width: 95%;
     // margin-right: 10px;
     margin-bottom: 3rem;
     @include tablet {
@@ -95,3 +101,11 @@
     }
 }
 
+.show-container{
+    width: 100%;
+    text-align: center;
+}
+.cursor-anime-default{
+    cursor: url('../../assets/sitama_cursor.png'), auto;
+    
+}

@@ -7,13 +7,14 @@ import Button, { OutlineButton } from "../button/Button";
 import Input from "../input/Input";
 import apiConfig from "../../api/apiConfig";
 import { tipe } from "../../api/AZapi";
-import { FaZhihu } from "react-icons/fa";
+import { BiSearchAlt } from "react-icons/bi";
+import {MdOutlineMore} from "react-icons/md";
 
 const MovieGrid = (props) => {
   const [items, setItems] = useState([]);
   const [filterGenre, setfilterGenre] = useState([]);
   const [page, setPage] = useState(1);
-  const [totalPage, setTotalPage] = useState(0);
+  const [showItem, setshowItem] = useState(18);
 
   const { keyword } = useParams();
   var listgenre = [
@@ -79,7 +80,6 @@ const MovieGrid = (props) => {
           case tipe.anime:
             if (props.category !== undefined) {
               if (props.category === "genre") {
-                console.log(props.category);
                 if (props.genre !== undefined) {
                   setfilterGenre([props.genre]);
                 }
@@ -92,7 +92,7 @@ const MovieGrid = (props) => {
                   .then((res) => {
                     if (res.ok) return res.json();
                   })
-                  .then((res) => setItems(res.slice(0, 20)))
+                  .then((res) => setItems(res))
                   .catch((err) => console.log(err));
               } else {
                 fetch(apiConfig.baseUrl + `Anime/category/${props.category}`, {
@@ -104,7 +104,7 @@ const MovieGrid = (props) => {
                   .then((res) => {
                     if (res.ok) return res.json();
                   })
-                  .then((res) => setItems(res.slice(0, 20)))
+                  .then((res) => setItems(res))
                   .catch((err) => console.log(err));
               }
             } else {
@@ -117,7 +117,7 @@ const MovieGrid = (props) => {
                 .then((res) => {
                   if (res.ok) return res.json();
                 })
-                .then((res) => setItems(res.slice(0, 20)))
+                .then((res) => setItems(res))
                 .catch((err) => console.log());
             }
             break;
@@ -153,10 +153,35 @@ const MovieGrid = (props) => {
       setfilterGenre((prev) => prev.filter((x) => x !== value));
     }
   };
-
+  function adsComponent() {
+    return (
+      <div>
+        <script
+          type="text/javascript"
+          dangerouslySetInnerHTML={{
+            __html: `
+              atOptions = {
+                'key' : '93b43a671771bb6bc0b23d72f6013653',
+                'format' : 'iframe',
+                'height' : 60,
+                'width' : 468,
+                'params' : {}
+              };
+              document.write('<scr' + 'ipt type="text/javascript" src="http' + (location.protocol === 'https:' ? 's' : '') + '://www.profitabledisplaynetwork.com/93b43a671771bb6bc0b23d72f6013653/invoke.js"></scr' + 'ipt>');
+            `
+          }}
+        />
+      </div>
+    );
+  }
   return (
     <>
       <div className="section mb-3">
+        {/* ads */}
+        
+        {adsComponent()}
+
+        {/* ==== */}
         <MovieSearch tipe={props.tipe} keyword={keyword} />
 
         <div className="section mb-3">
@@ -173,10 +198,12 @@ const MovieGrid = (props) => {
                     return (
                       <li className="text-center">
                         <input
+                          className="cursor-anime-default"
                           type="checkbox"
                           name="genre"
                           value={[gr]}
                           onChange={handleChangeGenre}
+                          // style={{width:"25%", display:"inline"}}
                         />
                         <h5 className="h5-normal">{gr}</h5>
                       </li>
@@ -187,6 +214,7 @@ const MovieGrid = (props) => {
             </div>
           </div>
 
+          <div className="genre-choice">
           {filterGenre.map((x, z) => (
             <>
               <span> </span>
@@ -202,10 +230,11 @@ const MovieGrid = (props) => {
               </OutlineButton>
             </>
           ))}
+          </div>
         </div>
       </div>
       <div className="movie-grid">
-        {items.map((item, i) => {
+        {items.slice(0,showItem).map((item, i) => {
           var gnrvalid = false;
           if (filterGenre.length !== 0) {
             filterGenre.map((gnr) => {
@@ -221,6 +250,14 @@ const MovieGrid = (props) => {
           }
         })}
       </div>
+      <div className="show-container">
+        <a className="cursor-anime" onClick={() => setshowItem(showItem+12)}>SHOW MORE <MdOutlineMore fontSize="20"/></a>
+          {/* ads */}
+          
+          {adsComponent()}
+          
+          {/* ==== */}
+        </div>
     </>
   );
 };
@@ -261,6 +298,7 @@ const MovieSearch = (props) => {
 
         <Button className="small" onClick={goToSearch}>
           Search
+          <BiSearchAlt/>
         </Button>
       </div>
     </>

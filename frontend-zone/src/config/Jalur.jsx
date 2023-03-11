@@ -102,6 +102,10 @@ const Jalur = () => {
                 path='/:tipe/:category/:genre'
                 element={<Catalog/>}
             />
+            <Route
+                path='/:tipe/:category'
+                element={<Catalog/>}
+            />
             {/* <Route
                 path='/:tipe/:category'
                 element={<Catalog/>}

@@ -1,11 +1,8 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useParams } from "react-router";
-import { useNavigate } from "react-router-dom";
 import "./AdminMenu.scss";
-import bg from "../../assets/footer-bg.jpg";
-import background_video from "../../assets/backgroun_video_anime.mp4";
+import bg from "../../assets/header_bg.jpg";
 import axios from "axios";
 import apiConfig from "../../api/apiConfig";
 const AdminMenu = () => {

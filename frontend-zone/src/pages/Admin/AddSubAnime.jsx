@@ -8,9 +8,8 @@ import getYear from "date-fns/getYear";
 import getMonth from "date-fns/getYear";
 import apiConfig from '../../api/apiConfig';
 import "react-datepicker/dist/react-datepicker.css";
-import bg from '../../assets/footer-bg.jpg';
+import bg from '../../assets/header_bg.jpg';
 import { Link } from 'react-router-dom';
-import bg_home from '../../assets/ic_home.png';
 
 import {FaHome} from 'react-icons/fa';
 import {RxUpdate} from 'react-icons/rx';
@@ -22,10 +21,10 @@ const AddSubAnime = () => {
     const [category,setcategory] = useState([])
     const [title,settitle] = useState("")
     const [episode,setEpisode] = useState(0)
-    const   [link_360,setlink_360] = useState([])
-    const   [link_480,setlink_480] = useState([])
-    const   [link_720,setlink_720] = useState([])
-    const   [link_1080,setlink_1080] = useState([])
+    const [link_360,setlink_360] = useState(['','','','',''])
+    const [link_480,setlink_480] = useState(['','','','',''])
+    const [link_720,setlink_720] = useState(['','','','',''])
+    const [link_1080,setlink_1080] = useState(['','','','',''])
     const [stream_link,setstream_link] = useState("")
     const [upload_at, setupload_at] = useState(new Date())
     const [slug,setslug] = useState("")

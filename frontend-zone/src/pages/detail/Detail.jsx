@@ -93,9 +93,7 @@ const Detail = () => {
       if (link_stream.current) {
         if (x !== null) {
           link_stream.current.src = x;
-          console.log(x);
         } else {
-          console.log(x);
           link_stream.current.src = null;
         }
       }
@@ -149,12 +147,34 @@ const Detail = () => {
   };
 
   const openNewLink = (x) => {
+    
     window.open(
       "https://reticencevaliddecoction.com/s3skmstw0q?key=338b6f5fbc2215c345585fff3de1db3f",
       "_blank"
     );
   };
-
+  function adsComponent() {
+    return (
+      <div>
+        <script
+          type="text/javascript"
+          dangerouslySetInnerHTML={{
+            __html: `
+              atOptions = {
+                'key' : '93b43a671771bb6bc0b23d72f6013653',
+                'format' : 'iframe',
+                'height' : 60,
+                'width' : 468,
+                'params' : {}
+              };
+              document.write('<scr' + 'ipt type="text/javascript" src="http' + (location.protocol === 'https:' ? 's' : '') + '://www.profitabledisplaynetwork.com/93b43a671771bb6bc0b23d72f6013653/invoke.js"></scr' + 'ipt>');
+            `
+          }}
+        />
+      </div>
+    );
+  }
+  console.clear()
   return (
     <>
       {diketahui ? (
@@ -192,7 +212,7 @@ const Detail = () => {
                       ) : (
                         <iframe
                           className="frame-video"
-                          ref={items.stream_link}
+                          src={items.stream_link}
                           type="video/mp4"
                           allowFullScreen={true}
                         ></iframe>
@@ -208,11 +228,6 @@ const Detail = () => {
                       </ul>
                     </div>
                   </div>
-
-                  <span className="info" style={{ marginLeft: "10px" }}>
-                    {" "}
-                    Download :
-                  </span>
                   <div className="dropdown-link">
                     <span style={{ fontWeight: "600" }}>
                       Google Drive <BsDownload />
@@ -225,7 +240,7 @@ const Detail = () => {
                         // target="_blank"
                         // rel="noopener noreferrer"
                       >
-                        {link_360[0] == undefined ? (
+                        {link_360[0] === '' ? (
                           <span style={{ textDecoration: "line-through" }}>
                             360p
                           </span>
@@ -241,7 +256,7 @@ const Detail = () => {
                         // rel="noopener noreferrer"
                         onClick={openNewLink}
                       >
-                        {link_480[0] == undefined ? (
+                        {link_480[0] === '' ? (
                           <span style={{ textDecoration: "line-through" }}>
                             480p
                           </span>
@@ -255,7 +270,7 @@ const Detail = () => {
                         href={link_720[0]}
                         onClick={openNewLink}
                       >
-                        {link_720[0] == undefined ? (
+                        {link_720[0] === '' ? (
                           <span style={{ textDecoration: "line-through" }}>
                             720p
                           </span>
@@ -269,7 +284,7 @@ const Detail = () => {
                         href={link_1080[0]}
                         onClick={openNewLink}
                       >
-                        {link_1080[0] == undefined ? (
+                        {link_1080[0] === '' ? (
                           <span style={{ textDecoration: "line-through" }}>
                             1080p
                           </span>
@@ -289,7 +304,7 @@ const Detail = () => {
                         href={link_360[1]}
                         onClick={openNewLink}
                       >
-                        {link_360[1] == undefined ? (
+                        {link_360[1] === '' ? (
                           <span style={{ textDecoration: "line-through" }}>
                             360p
                           </span>
@@ -303,7 +318,7 @@ const Detail = () => {
                         href={link_480[1]}
                         onClick={openNewLink}
                       >
-                        {link_480[1] == undefined ? (
+                        {link_480[1] === '' ? (
                           <span style={{ textDecoration: "line-through" }}>
                             480p
                           </span>
@@ -317,7 +332,7 @@ const Detail = () => {
                         href={link_720[1]}
                         onClick={openNewLink}
                       >
-                        {link_720[1] == undefined ? (
+                        {link_720[1] === '' ? (
                           <span style={{ textDecoration: "line-through" }}>
                             720p
                           </span>
@@ -331,7 +346,7 @@ const Detail = () => {
                         href={link_1080[1]}
                         onClick={openNewLink}
                       >
-                        {link_1080[1] == undefined ? (
+                        {link_1080[1] === '' ? (
                           <span style={{ textDecoration: "line-through" }}>
                             1080p
                           </span>
@@ -351,7 +366,7 @@ const Detail = () => {
                         href={link_360[2]}
                         onClick={openNewLink}
                       >
-                        {link_360[2] == undefined ? (
+                        {link_360[2] === '' ? (
                           <span style={{ textDecoration: "line-through" }}>
                             360p
                           </span>
@@ -365,7 +380,7 @@ const Detail = () => {
                         href={link_480[2]}
                         onClick={openNewLink}
                       >
-                        {link_480[2] == undefined ? (
+                        {link_480[2] === '' ? (
                           <span style={{ textDecoration: "line-through" }}>
                             480p
                           </span>
@@ -379,7 +394,7 @@ const Detail = () => {
                         href={link_720[2]}
                         onClick={openNewLink}
                       >
-                        {link_720[2] == undefined ? (
+                        {link_720[2] === '' ? (
                           <span style={{ textDecoration: "line-through" }}>
                             720p
                           </span>
@@ -393,7 +408,7 @@ const Detail = () => {
                         href={link_1080[2]}
                         onClick={openNewLink}
                       >
-                        {link_1080[2] == undefined ? (
+                        {link_1080[2] === '' ? (
                           <span style={{ textDecoration: "line-through" }}>
                             1080p
                           </span>
@@ -452,6 +467,11 @@ const Detail = () => {
                 </div>
               </div>
               <div className="section mb-3">
+                {/* ads */}
+        
+                  {adsComponent()}
+                
+                {/* ==== */}
                 <div className="section__header mb-2">
                   <h2>Trending Movies</h2>
                   <Link to="/Movie/popular">

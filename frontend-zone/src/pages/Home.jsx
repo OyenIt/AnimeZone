@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
 import { OutlineButton } from "../components/button/Button";
 import HeroSlide from "../components/hero-slide/HeroSlide";
 import MovieList from "../components/movie-list/MovieList";
@@ -20,6 +19,7 @@ const Home = () => {
     "Harem",
     "Historical",
     "Horror",
+    "Isekai",
     "Josei",
     "Kids",
     "Magic",
@@ -49,17 +49,6 @@ const Home = () => {
     "Thriller",
     "Vampire",
   ];
-  // // var first_visit = false;
-  // checkFirstVisit();
-  // function checkFirstVisit(){
-  //     if(localStorage.getItem('was_visited')){
-  //         return;
-  //     }
-  //     setOpen(true);
-  //     localStorage.setItem('was_visited', 1);
-  //     console.log(localStorage.getItem('was_visited'))
-  // }
-  // // console.log(first_visit);
   function adsComponent() {
     return (
       <div>
@@ -81,11 +70,10 @@ const Home = () => {
       </div>
     );
   }
+  console.clear()
   return (
     <>
       <HeroSlide />
-
-      
       <div className="container">
         {/* ads */}
           <div className="section mb" style={{padding:"0"}}>
@@ -96,7 +84,7 @@ const Home = () => {
           <div className="section__header mb-2">
             
             <h2>Trending Movies</h2>
-            <Link to="/Movie/popular">
+            <Link to="/Movie/Popular">
               <OutlineButton className="small">View more</OutlineButton>
             </Link>
           </div>
@@ -110,7 +98,7 @@ const Home = () => {
         <div className="section mb-3">
           <div className="section__header mb-2">
             <h2>Popular Anime</h2>
-            <Link to="/Anime/popular">
+            <Link to="/Anime/Popular">
               <OutlineButton className="small">View more</OutlineButton>
             </Link>
           </div>
@@ -124,7 +112,7 @@ const Home = () => {
         <div className="section mb-3">
           <div className="section__header mb-2">
             <h2>New Update Anime</h2>
-            <Link to="/Anime/new">
+            <Link to="/Anime/newUpdate">
               <OutlineButton className="small">View more</OutlineButton>
             </Link>
           </div>
@@ -135,18 +123,6 @@ const Home = () => {
             {adsComponent()}
           </div>
         {/* ==== */}
-        {/* ads session */}
-        {/* <div className="section mb" style={{padding:"0"}}>
-          <div className="ads-container">
-            <a href="">
-              <img
-                alt="banner"
-                src="https://landings-cdn.adsterratech.com/referralBanners/png/468%20x%2060%20px.png"
-              />
-            </a>
-          </div>
-        </div> */}
-      {/* ===== */}
         <div className="section mb-3">
           <div className="section__header mb-2">
             <h2>GENRE</h2>

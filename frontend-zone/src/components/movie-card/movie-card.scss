@@ -82,6 +82,7 @@ h3 {
     @include tablet{
         margin-top: -30px;
         text-align: center;
+        border-radius: 5px;
     }
 }
 .info-card-title{
@@ -102,7 +103,7 @@ h3 {
     font-size:20px;
     font-weight:600;
     @include tablet{
-    font-size:10px;
-    font-weight:300;
+        font-size:10px;
+        font-weight:600;
     }
 }

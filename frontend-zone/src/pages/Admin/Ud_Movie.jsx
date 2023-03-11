@@ -5,25 +5,20 @@ import axios from 'axios';
 import DatePicker from "react-datepicker"
 import getYear from "date-fns/getYear"
 import getMonth from "date-fns/getYear"
-
-
 import apiConfig from '../../api/apiConfig';
-import bg from '../../assets/footer-bg.jpg';
-
+import bg from '../../assets/header_bg.jpg';
 import { Link } from 'react-router-dom';
-import bg_home from '../../assets/ic_home.png';
-
 import {FaHome} from 'react-icons/fa';
-
 import {RxUpdate} from 'react-icons/rx';
+
 export const Ud_Movie = () => {
 
     const [items, setItems] = useState([])
     const [showTables, setShowTables] = useState(true);
-    const   [link_360,setlink_360] = useState([])
-    const   [link_480,setlink_480] = useState([])
-    const   [link_720,setlink_720] = useState([])
-    const   [link_1080,setlink_1080] = useState([])
+    const [link_360,setlink_360] = useState(['','','','',''])
+    const [link_480,setlink_480] = useState(['','','','',''])
+    const [link_720,setlink_720] = useState(['','','','',''])
+    const [link_1080,setlink_1080] = useState(['','','','',''])
 
     const [poster,setposter] = useState("")
     const [backdrop,setbackdrop] = useState("")
