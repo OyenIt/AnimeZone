@@ -228,9 +228,12 @@ const Detail = () => {
                       </ul>
                     </div>
                   </div>
+                  <span style={{ fontWeight: "600", marginLeft:"10px"}}>
+                      Download : 
+                    </span>
                   <div className="dropdown-link">
                     <span style={{ fontWeight: "600" }}>
-                      Google Drive <BsDownload />
+                      HxFile <BsDownload />
                     </span>
                     <div className="dropdown-content-link">
                       <a
@@ -294,7 +297,7 @@ const Detail = () => {
                       </a>
                     </div>
                   </div>
-                  <div className="dropdown-link">
+                  {/* <div className="dropdown-link">
                     <span style={{ fontWeight: "600" }}>
                       DOOD <BsDownload />
                     </span>
@@ -417,7 +420,7 @@ const Detail = () => {
                         )}
                       </a>
                     </div>
-                  </div>
+                  </div> */}
                   <br />
                   <div
                     className="show-poster-info"

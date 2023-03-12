@@ -315,7 +315,7 @@ export const Ud_SubAnime = () => {
                 <li>
                     <ul className='container-link-dowload'>
                     <li className='container-link-dowload-item'>
-                            <input className='input-data-link' type="text" placeholder="Google Drive" name='link1'
+                            <input className='input-data-link' type="text" placeholder="hxfile" name='link1'
                             value={link_360[0]} onChange={(e) => {
                                 setlink_360((prevArr) => {
                                   const result = [...prevArr];
@@ -326,7 +326,7 @@ export const Ud_SubAnime = () => {
                             
                         </li>
                         <li className='container-link-dowload-item'>
-                            <input className='input-data-link' type="text" placeholder="Google Drive" name='link2'
+                            <input className='input-data-link' type="text" placeholder="hxfile" name='link2'
                              value={link_360[1]} onChange={(e) => {
                                 setlink_360((prevArr) => {
                                   const result = [...prevArr];
@@ -337,7 +337,7 @@ export const Ud_SubAnime = () => {
                             
                         </li>
                         <li className='container-link-dowload-item'>
-                            <input className='input-data-link' type="text" placeholder="Google Drive" name='link3' 
+                            <input className='input-data-link' type="text" placeholder="hxfile" name='link3' 
                             value={link_360[2]} onChange={(e) => {
                                 setlink_360((prevArr) => {
                                   const result = [...prevArr];
@@ -348,7 +348,7 @@ export const Ud_SubAnime = () => {
                             
                         </li>
                         <li className='container-link-dowload-item'>
-                            <input className='input-data-link' type="text" placeholder="Google Drive" name='link4' 
+                            <input className='input-data-link' type="text" placeholder="hxfile" name='link4' 
                             value={link_360[3]} onChange={(e) => {
                                 setlink_360((prevArr) => {
                                   const result = [...prevArr];
@@ -359,7 +359,7 @@ export const Ud_SubAnime = () => {
                             
                         </li>
                         <li className='container-link-dowload-item'>
-                            <input className='input-data-link' type="text" placeholder="Google Drive" name='link5' 
+                            <input className='input-data-link' type="text" placeholder="hxfile" name='link5' 
                              value={link_360[4]} onChange={(e) => {
                                 setlink_360((prevArr) => {
                                   const result = [...prevArr];
@@ -376,7 +376,7 @@ export const Ud_SubAnime = () => {
                 <li>
                     <ul className='container-link-dowload'>
                     <li className='container-link-dowload-item'>
-                            <input className='input-data-link' type="text" placeholder="Google Drive" name='link6' 
+                            <input className='input-data-link' type="text" placeholder="hxfile" name='link6' 
                             value={link_480[0]} onChange={(e) => {
                                 setlink_480((prevArr) => {
                                   const result = [...prevArr];
@@ -387,7 +387,7 @@ export const Ud_SubAnime = () => {
                             
                         </li>
                         <li className='container-link-dowload-item'>
-                            <input className='input-data-link' type="text" placeholder="Google Drive" name='link7'
+                            <input className='input-data-link' type="text" placeholder="hxfile" name='link7'
                             value={link_480[1]} onChange={(e) => {
                                 setlink_480((prevArr) => {
                                   const result = [...prevArr];
@@ -398,7 +398,7 @@ export const Ud_SubAnime = () => {
                             
                         </li>
                         <li className='container-link-dowload-item'>
-                            <input className='input-data-link' type="text" placeholder="Google Drive" name='link8'
+                            <input className='input-data-link' type="text" placeholder="hxfile" name='link8'
                             value={link_480[2]} onChange={(e) => {
                                 setlink_480((prevArr) => {
                                   const result = [...prevArr];
@@ -409,7 +409,7 @@ export const Ud_SubAnime = () => {
                             
                         </li>
                         <li className='container-link-dowload-item'>
-                            <input className='input-data-link' type="text" placeholder="Google Drive" name='link9' 
+                            <input className='input-data-link' type="text" placeholder="hxfile" name='link9' 
                             value={link_480[3]} onChange={(e) => {
                                 setlink_480((prevArr) => {
                                   const result = [...prevArr];
@@ -420,7 +420,7 @@ export const Ud_SubAnime = () => {
                             
                         </li>
                         <li className='container-link-dowload-item'>
-                            <input className='input-data-link' type="text" placeholder="Google Drive" name='link10' 
+                            <input className='input-data-link' type="text" placeholder="hxfile" name='link10' 
                             value={link_480[4]} onChange={(e) => {
                                 setlink_480((prevArr) => {
                                   const result = [...prevArr];
@@ -438,7 +438,7 @@ export const Ud_SubAnime = () => {
                 <li>
                     <ul className='container-link-dowload'>
                     <li className='container-link-dowload-item'>
-                            <input className='input-data-link' type="text" placeholder="Google Drive" name='link11' 
+                            <input className='input-data-link' type="text" placeholder="hxfile" name='link11' 
                             value={link_720[0]} onChange={(e) => {
                                 setlink_720((prevArr) => {
                                   const result = [...prevArr];
@@ -449,7 +449,7 @@ export const Ud_SubAnime = () => {
                             
                         </li>
                         <li className='container-link-dowload-item'>
-                            <input className='input-data-link' type="text" placeholder="Google Drive" name='link12' 
+                            <input className='input-data-link' type="text" placeholder="hxfile" name='link12' 
                             value={link_720[1]} onChange={(e) => {
                                 setlink_720((prevArr) => {
                                   const result = [...prevArr];
@@ -460,7 +460,7 @@ export const Ud_SubAnime = () => {
                             
                         </li>
                         <li className='container-link-dowload-item'>
-                            <input className='input-data-link' type="text" placeholder="Google Drive" name='link13' 
+                            <input className='input-data-link' type="text" placeholder="hxfile" name='link13' 
                             value={link_720[2]} onChange={(e) => {
                                 setlink_720((prevArr) => {
                                   const result = [...prevArr];
@@ -471,7 +471,7 @@ export const Ud_SubAnime = () => {
                             
                         </li>
                         <li className='container-link-dowload-item'>
-                            <input className='input-data-link' type="text" placeholder="Google Drive" name='link14' 
+                            <input className='input-data-link' type="text" placeholder="hxfile" name='link14' 
                             value={link_720[3]} onChange={(e) => {
                                 setlink_720((prevArr) => {
                                   const result = [...prevArr];
@@ -482,7 +482,7 @@ export const Ud_SubAnime = () => {
                             
                         </li>
                         <li className='container-link-dowload-item'>
-                            <input className='input-data-link' type="text" placeholder="Google Drive" name='link15' 
+                            <input className='input-data-link' type="text" placeholder="hxfile" name='link15' 
                             value={link_720[4]} onChange={(e) => {
                                 setlink_720((prevArr) => {
                                   const result = [...prevArr];
@@ -499,7 +499,7 @@ export const Ud_SubAnime = () => {
                 <li>
                     <ul className='container-link-dowload'>
                     <li className='container-link-dowload-item'>
-                            <input className='input-data-link' type="text" placeholder="Google Drive" name='link16' 
+                            <input className='input-data-link' type="text" placeholder="hxfile" name='link16' 
                             value={link_1080[0]} onChange={(e) => {
                                 setlink_1080((prevArr) => {
                                   const result = [...prevArr];
@@ -510,7 +510,7 @@ export const Ud_SubAnime = () => {
                             
                         </li>
                         <li className='container-link-dowload-item'>
-                            <input className='input-data-link' type="text" placeholder="Google Drive" name='link17' 
+                            <input className='input-data-link' type="text" placeholder="hxfile" name='link17' 
                             value={link_1080[1]} onChange={(e) => {
                                 setlink_1080((prevArr) => {
                                   const result = [...prevArr];
@@ -521,7 +521,7 @@ export const Ud_SubAnime = () => {
                             
                         </li>
                         <li className='container-link-dowload-item'>
-                            <input className='input-data-link' type="text" placeholder="Google Drive" name='link18' 
+                            <input className='input-data-link' type="text" placeholder="hxfile" name='link18' 
                             value={link_1080[2]} onChange={(e) => {
                                 setlink_1080((prevArr) => {
                                   const result = [...prevArr];
@@ -532,7 +532,7 @@ export const Ud_SubAnime = () => {
                             
                         </li>
                         <li className='container-link-dowload-item'>
-                            <input className='input-data-link' type="text" placeholder="Google Drive" name='link19' 
+                            <input className='input-data-link' type="text" placeholder="hxfile" name='link19' 
                             value={link_1080[3]} onChange={(e) => {
                                 setlink_1080((prevArr) => {
                                   const result = [...prevArr];
@@ -543,7 +543,7 @@ export const Ud_SubAnime = () => {
                             
                         </li>
                         <li className='container-link-dowload-item'>
-                            <input className='input-data-link' type="text" placeholder="Google Drive" name='link20' 
+                            <input className='input-data-link' type="text" placeholder="hxfile" name='link20' 
                             value={link_1080[4]} onChange={(e) => {
                                 setlink_1080((prevArr) => {
                                   const result = [...prevArr];

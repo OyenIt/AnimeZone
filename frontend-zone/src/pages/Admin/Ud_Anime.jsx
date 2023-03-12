@@ -268,8 +268,8 @@ export const Ud_Anime = () => {
                     onChange={(e) => setbackdrop(e.target.value)}/></li>
                 <li><h4>POSTER</h4></li>
                 <li>:</li>
-                <li><input className='input-data' type="text" placeholder="Enter Backdrop" name='backdrop' value={backdrop}
-                    onChange={(e) => setbackdrop(e.target.value)}/></li>
+                <li><input className='input-data' type="text" placeholder="Enter poster" name='poster' value={poster}
+                    onChange={(e) => setposter(e.target.value)}/></li>
                 <li><h4>TITLE</h4></li>
             
                 <li>:</li>

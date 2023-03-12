@@ -300,7 +300,7 @@ const AddSubAnime = () => {
                         <input
                           className="input-data-link"
                           type="text"
-                          placeholder="Google Drive"
+                          placeholder="hxfile"
                           name="link1"
                           value={link_360[0]}
                           onChange={(e) => {
@@ -388,7 +388,7 @@ const AddSubAnime = () => {
                         <input
                           className="input-data-link"
                           type="text"
-                          placeholder="Google Drive"
+                          placeholder="hxfile"
                           name="link6"
                           value={link_480[0]}
                           onChange={(e) => {
@@ -476,7 +476,7 @@ const AddSubAnime = () => {
                         <input
                           className="input-data-link"
                           type="text"
-                          placeholder="Google Drive"
+                          placeholder="hxfile"
                           name="link11"
                           value={link_720[0]}
                           onChange={(e) => {
@@ -564,7 +564,7 @@ const AddSubAnime = () => {
                         <input
                           className="input-data-link"
                           type="text"
-                          placeholder="Google Drive"
+                          placeholder="hxfile"
                           name="link16"
                           value={link_1080[0]}
                           onChange={(e) => {
